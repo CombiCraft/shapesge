@@ -28,6 +28,7 @@ public class Main {
         ImageData id = new ImageData("test.jpg");
         System.out.format("%d x %d%n", id.getWidth(), id.getHeight());
         Image i = new Image(id);
+        i.changeSize(50, 90);
         i.makeVisible();
 
         Circle randomCircle = new Circle(100, 100);

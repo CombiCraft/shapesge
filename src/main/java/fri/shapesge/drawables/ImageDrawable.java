@@ -3,6 +3,7 @@ package fri.shapesge.drawables;
 import fri.shapesge.engine.Game;
 
 import java.awt.Graphics2D;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 
@@ -42,5 +43,32 @@ public class ImageDrawable extends TranslatableDrawable {
 
     public int getHeight() {
         return this.image.getHeight();
+    }
+
+    public void changeSize(int newWidth, int newHeight) {
+        int origWidth = this.image.getWidth();
+        int origHeight = this.image.getHeight();
+
+        int scaleWidth = newWidth / origWidth;
+        int scaleHeight = newHeight / origHeight;
+
+        var transform = new AffineTransform();
+        transform.scale(scaleWidth, scaleHeight);
+
+        var newImage = new BufferedImage(newWidth, newHeight, this.image.getType());
+
+        var g2d = newImage.createGraphics();
+        g2d.drawImage(this.image, transform, null);
+        g2d.dispose();
+
+        this.image = newImage;
+    }
+
+    public void flipHorizontal(boolean mirrored) {
+
+    }
+
+    public void fripVertical(boolean mirrored) {
+
     }
 }

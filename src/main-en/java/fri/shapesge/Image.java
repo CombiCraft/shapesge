@@ -164,6 +164,32 @@ public class Image {
     }
 
     /**
+     * Resize the image.
+     * The image will still be anchored from the top left, and rotated around its center.
+     * @param newWidth the new width of the image.
+     * @param newHeight the new height of the image.
+     */
+    public void changeSize(int newWidth, int newHeight) {
+        this.drawable.changeSize(newWidth, newHeight);
+    }
+
+    /**
+     * Mirror the image horizontally.
+     * @param mirrored Set to TRUE to make the image mirrored. Set to FALSE to get the original orientation.
+     */
+    public void mirrorHorizontal(boolean mirrored) {
+        this.drawable.flipHorizontal(mirrored);
+    }
+
+    /**
+     * Mirror the image vertically.
+     * @param mirrored Set to TRUE to make the image mirrored. Set to FALSE to get the original orientation.
+     */
+    public void mirrorVertical(boolean mirrored) {
+        this.drawable.fripVertical(mirrored);
+    }
+
+    /**
      * @return the x-coordinate (offset from left border) of the shape.
      */
     public int getPositionX() {
