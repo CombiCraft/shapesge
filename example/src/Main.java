@@ -25,12 +25,12 @@ public class Main {
         t.changeColor("blue");
         t.makeVisible();
 
-        ImageData id = new ImageData("test.jpg");
-        System.out.format("%d x %d%n", id.getWidth(), id.getHeight());
-        Image i = new Image(id);
-        i.changeSize(50, 90);
-        i.makeVisible();
-        i.mirrorHorizontal(false);
+//        ImageData id = new ImageData("test.jpg");
+//        System.out.format("%d x %d%n", id.getWidth(), id.getHeight());
+//        Image i = new Image(id);
+//        i.changeSize(50, 90);
+//        i.makeVisible();
+//        i.mirrorHorizontal(false);
 
         Circle randomCircle = new Circle(100, 100);
         randomCircle.changeColor("red");
@@ -45,10 +45,13 @@ public class Main {
     public static class ManagedTest {
         private final Circle circle;
         private final Circle randomCircle;
+        private final Image image;
 
         public ManagedTest(Circle circle, Circle randomCircle) {
             this.circle = circle;
             this.randomCircle = randomCircle;
+            this.image = new Image("test.jpg");
+            this.image.makeVisible();
         }
 
         public void moveRight() {
@@ -72,6 +75,7 @@ public class Main {
             System.out.println("Tick - tack");
             this.circle.moveRight();
             this.randomCircle.changePosition(r.nextInt(1000), r.nextInt(1000));
+            this.image.changeSize(r.nextInt(99) + 1, r.nextInt(99) + 1);
         }
     }
 }

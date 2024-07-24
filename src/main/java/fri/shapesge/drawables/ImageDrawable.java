@@ -8,14 +8,17 @@ import java.awt.image.BufferedImage;
 
 public class ImageDrawable extends TranslatableDrawable {
     private BufferedImage image;
+    private BufferedImage original;
 
     public ImageDrawable(int x, int y, int angle, BufferedImage image) {
         super(x, y, angle);
         this.image = image;
+        this.original = image;
     }
 
     public void changeImage(BufferedImage image) {
         this.image = image;
+        this.original = this.image;
 
         Game.getGame().somethingHasChanged();
     }
@@ -44,6 +47,7 @@ public class ImageDrawable extends TranslatableDrawable {
         return this.image.getHeight();
     }
 
+    @SuppressWarnings("SpellCheckingInspection")
     public void changeSize(int newWidth, int newHeight) {
         /*
          * StackOverflow: "Resize image in Java without losing transparency"
@@ -54,10 +58,10 @@ public class ImageDrawable extends TranslatableDrawable {
          */
         BufferedImage resizedImage = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
         Graphics2D graphics2D = resizedImage.createGraphics();
-        graphics2D.drawImage(this.image, 0, 0, newWidth, newHeight, null);
+        graphics2D.drawImage(this.original, 0, 0, newWidth, newHeight, null);
         graphics2D.dispose();
 
-        this.changeImage(resizedImage);
+        this.image = resizedImage;
     }
 
     public void flipHorizontal(boolean mirrored) {
