@@ -191,7 +191,7 @@ public class Obrazok {
      * @param prevrateny Nastav TRUE pre prevrátený obrázok. Nastav FALSE pre pôvodnú orientáciu obrázka.
      */
     public void prevratVertikalne(boolean prevrateny) {
-        this.drawable.fripVertical(prevrateny);
+        this.drawable.flipVertical(prevrateny);
     }
 
     /**
