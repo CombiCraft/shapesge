@@ -76,6 +76,7 @@ public class Main {
             this.circle.moveRight();
             this.randomCircle.changePosition(r.nextInt(1000), r.nextInt(1000));
             this.image.changeSize(r.nextInt(99) + 1, r.nextInt(99) + 1);
+            this.image.mirrorHorizontal();
         }
     }
 }
