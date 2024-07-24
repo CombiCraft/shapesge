@@ -46,22 +46,25 @@ public class ImageDrawable extends TranslatableDrawable {
     }
 
     public void changeSize(int newWidth, int newHeight) {
-        int origWidth = this.image.getWidth();
-        int origHeight = this.image.getHeight();
-
-        int scaleWidth = newWidth / origWidth;
-        int scaleHeight = newHeight / origHeight;
-
-        var transform = new AffineTransform();
-        transform.scale(scaleWidth, scaleHeight);
-
-        var newImage = new BufferedImage(newWidth, newHeight, this.image.getType());
-
-        var g2d = newImage.createGraphics();
-        g2d.drawImage(this.image, transform, null);
-        g2d.dispose();
-
-        this.image = newImage;
+        throw new RuntimeException("Not yet implemented!");
+//        int origWidth = this.image.getWidth();
+//        int origHeight = this.image.getHeight();
+//
+//        int scaleWidth = newWidth / origWidth;
+//        int scaleHeight = newHeight / origHeight;
+//
+//        var transform = new AffineTransform();
+//        transform.scale(scaleWidth, scaleHeight);
+//
+//        var newImage = new BufferedImage(newWidth, newHeight, this.image.getType());
+//
+//        var g2d = newImage.createGraphics();
+//        g2d.drawImage(this.image, transform, null);
+//        g2d.dispose();
+//
+////        this.image = newImage;
+//
+//        Game.getGame().somethingHasChanged();
     }
 
     public void flipHorizontal(boolean mirrored) {
