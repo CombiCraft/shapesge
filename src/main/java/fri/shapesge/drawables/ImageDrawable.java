@@ -3,7 +3,6 @@ package fri.shapesge.drawables;
 import fri.shapesge.engine.Game;
 
 import java.awt.Graphics2D;
-import java.awt.geom.AffineTransform;
 import java.awt.geom.Point2D;
 import java.awt.image.BufferedImage;
 
@@ -46,32 +45,27 @@ public class ImageDrawable extends TranslatableDrawable {
     }
 
     public void changeSize(int newWidth, int newHeight) {
-        throw new RuntimeException("Not yet implemented!");
-//        int origWidth = this.image.getWidth();
-//        int origHeight = this.image.getHeight();
-//
-//        int scaleWidth = newWidth / origWidth;
-//        int scaleHeight = newHeight / origHeight;
-//
-//        var transform = new AffineTransform();
-//        transform.scale(scaleWidth, scaleHeight);
-//
-//        var newImage = new BufferedImage(newWidth, newHeight, this.image.getType());
-//
-//        var g2d = newImage.createGraphics();
-//        g2d.drawImage(this.image, transform, null);
-//        g2d.dispose();
-//
-////        this.image = newImage;
-//
-//        Game.getGame().somethingHasChanged();
+        /*
+         * StackOverflow: "Resize image in Java without losing transparency"
+         * asked Sep 23, 2012 at 11:55 by Nick Russler
+         * answered Mar 27, 2021 at 21:30 by Larjak
+         * https://stackoverflow.com/questions/12552144/resize-image-in-java-without-losing-transparency
+         * Adapted for use with ShapesGE by trailblazercombi
+         */
+        BufferedImage resizedImage = new BufferedImage(newWidth, newHeight, BufferedImage.TYPE_INT_ARGB);
+        Graphics2D graphics2D = resizedImage.createGraphics();
+        graphics2D.drawImage(this.image, 0, 0, newWidth, newHeight, null);
+        graphics2D.dispose();
+
+        this.changeImage(resizedImage);
     }
 
-    public void flipHorizontal(boolean mirrored) {
 
+    public void flipHorizontal(boolean mirrored) {
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 
     public void fripVertical(boolean mirrored) {
-
+        throw new UnsupportedOperationException("Not supported yet.");
     }
 }
