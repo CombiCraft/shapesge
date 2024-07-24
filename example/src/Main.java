@@ -30,7 +30,7 @@ public class Main {
         Image i = new Image(id);
         i.changeSize(50, 90);
         i.makeVisible();
-        i.mirrorHorizontal();
+        i.mirrorHorizontal(false);
 
         Circle randomCircle = new Circle(100, 100);
         randomCircle.changeColor("red");

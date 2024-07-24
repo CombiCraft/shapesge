@@ -182,11 +182,27 @@ public class Image {
     }
 
     /**
+     * Mirror the image horizontally.
+     * This method will always mirror the image, regardless of its current orientation.
+     */
+    public void mirrorHorizontal() {
+        this.drawable.flipHorizontal();
+    }
+
+    /**
      * Mirror the image vertically.
      * @param mirrored Set to TRUE to make the image mirrored. Set to FALSE to get the original orientation.
      */
     public void mirrorVertical(boolean mirrored) {
-        this.drawable.fripVertical(mirrored);
+        this.drawable.flipVertical(mirrored);
+    }
+
+    /**
+     * Mirror the image vertically.
+     * This method will always mirror the image, regardless of its current orientation.
+     */
+    public void mirrorVertical() {
+        this.drawable.flipVertical();
     }
 
     /**

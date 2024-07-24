@@ -60,12 +60,19 @@ public class ImageDrawable extends TranslatableDrawable {
         this.changeImage(resizedImage);
     }
 
-
     public void flipHorizontal(boolean mirrored) {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 
-    public void fripVertical(boolean mirrored) {
+    public void flipHorizontal() {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void flipVertical(boolean mirrored) {
+        throw new UnsupportedOperationException("Not supported yet.");
+    }
+
+    public void flipVertical() {
         throw new UnsupportedOperationException("Not supported yet.");
     }
 }

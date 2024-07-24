@@ -179,11 +179,27 @@ public class Obrazok {
     }
 
     /**
+     * Prevráť obrázok po šírke.
+     * Táto metóda VŽDY prevráti obrázok.
+     */
+    public void prevratHorizontalne() {
+        this.drawable.flipHorizontal();
+    }
+
+    /**
      * Prevráť obrázok po výške.
      * @param prevrateny Nastav TRUE pre prevrátený obrázok. Nastav FALSE pre pôvodnú orientáciu obrázka.
      */
     public void prevratVertikalne(boolean prevrateny) {
         this.drawable.fripVertical(prevrateny);
+    }
+
+    /**
+     * Prevráť obrázok po výške.
+     * Táto metóda VŽDY prevráti obrázok.
+     */
+    public void prevratVertikalne() {
+        this.drawable.flipVertical();
     }
 
     /**
