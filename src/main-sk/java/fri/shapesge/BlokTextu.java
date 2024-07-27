@@ -115,7 +115,7 @@ public class BlokTextu {
      */
     @SuppressWarnings("unused")
     public void zmenFont(String font, StylFontu styl, int velkost) {
-        this.drawable.changeFont(font, styl == StylFontu.BOLD, styl == StylFontu.ITALIC, styl == StylFontu.UNDERLINE, velkost);
+        this.drawable.changeFont(font, styl == StylFontu.BOLD, styl == StylFontu.ITALIC, styl == StylFontu.UNDERLINE, velkost, this.drawable.getLineSpacing());
     }
 
     /**
@@ -128,7 +128,35 @@ public class BlokTextu {
      */
     @SuppressWarnings("unused")
     public void zmenFont(String font, EnumSet<StylFontu> styl, int velkost) {
-        this.drawable.changeFont(font, styl.contains(StylFontu.BOLD), styl.contains(StylFontu.ITALIC), styl.contains(StylFontu.UNDERLINE), velkost);
+        this.drawable.changeFont(font, styl.contains(StylFontu.BOLD), styl.contains(StylFontu.ITALIC), styl.contains(StylFontu.UNDERLINE), velkost, this.drawable.getLineSpacing());
+    }
+
+    /**
+     * Zmeň font textu podľa požiadaviek.
+     * @param font    názov fontu
+     *                (napr. "Arial", "Times New Roman", "Courier New")
+     * @param styl    štýl fontu
+     *                (napr. {@link StylFontu#BOLD}, {@link StylFontu#ITALIC}, {@link StylFontu#UNDERLINE})
+     * @param velkost veľkosť fontu v pixeloch
+     * @param odsadenie veľkosť medzery medzi riadkami
+     */
+    @SuppressWarnings("unused")
+    public void zmenFont(String font, StylFontu styl, int velkost, int odsadenie) {
+        this.drawable.changeFont(font, styl == StylFontu.BOLD, styl == StylFontu.ITALIC, styl == StylFontu.UNDERLINE, velkost, odsadenie);
+    }
+
+    /**
+     * Zmeň font textu podľa požiadaviek.
+     * @param font    názov fontu
+     *                (napr. "Arial", "Times New Roman", "Courier New")
+     * @param styl    štýl fontu
+     *                (napr. {@code EnumSet.of(StylFontu.BOLD, StylFontu.ITALIC)})
+     * @param velkost veľkosť fontu v pixeloch
+     * @param odsadenie veľkosť medzery medzi riadkami
+     */
+    @SuppressWarnings("unused")
+    public void zmenFont(String font, EnumSet<StylFontu> styl, int velkost, int odsadenie) {
+        this.drawable.changeFont(font, styl.contains(StylFontu.BOLD), styl.contains(StylFontu.ITALIC), styl.contains(StylFontu.UNDERLINE), velkost, odsadenie);
     }
 
     /**
@@ -159,5 +187,47 @@ public class BlokTextu {
     @SuppressWarnings("unused")
     public void zmenPolohu(int x, int y) {
         this.drawable.moveTo(x, y);
+    }
+
+    /**
+     * @return x-ová súradnica (vzdialenosť od ľavého okraja) tvaru
+     */
+    public int getPoziciaX() {
+        return this.drawable.getXPosition();
+    }
+
+    /**
+     * @return y-ová súradnica (vzdialenosť od horného okraja) tvaru
+     */
+    public int getPoziciaY() {
+        return this.drawable.getYPosition();
+    }
+
+    /**
+     * @return šírka tvaru.
+     */
+    public int getSirka() {
+        return this.drawable.getWidth();
+    }
+
+    /**
+     * @return výška tvaru.
+     */
+    public int getVyska() {
+        return this.drawable.getHeight();
+    }
+
+    /**
+     * Ovládanie automatického zalamovania textu.
+     * Príliš dlhý text bude automaticky zalomený do ďalšieho riadku.
+     * Manuálne zalamovanie pomocou '\n' funguje vždy.
+     * @param maxSirka maximálna šírka textu v pixeloch. Ak maxSirka = 0 (alebo menej), zalamovanie bude vypnuté.
+     */
+    public void zalomText(int maxSirka) {
+        if (maxSirka <= 0) {
+            this.drawable.disableTextWrapping();
+        } else {
+            this.drawable.enableTextWrapping(maxSirka);
+        }
     }
 }

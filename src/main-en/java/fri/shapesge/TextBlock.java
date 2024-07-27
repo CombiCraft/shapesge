@@ -115,7 +115,20 @@ public class TextBlock {
      */
     @SuppressWarnings("unused")
     public void changeFont(String fontFamily, FontStyle style, int size) {
-        this.drawable.changeFont(fontFamily, style == FontStyle.BOLD, style == FontStyle.ITALIC, style == FontStyle.UNDERLINE, size);
+        this.drawable.changeFont(fontFamily, style == FontStyle.BOLD, style == FontStyle.ITALIC, style == FontStyle.UNDERLINE, size, this.drawable.getLineSpacing());
+    }
+
+    /**
+     * Change the font according to the new specification.
+     * @param fontFamily name of the font family
+     *                   (e.g. "Arial", "Times New Roman", "Courier New")
+     * @param style      style of the font
+     *                   (e.g. {@link FontStyle#BOLD}, {@link FontStyle#ITALIC}, {@link FontStyle#UNDERLINE})
+     * @param size       size of the font in pixels
+     * @param lineSpacing spacing between the lines of this Text Block
+     */
+    public void changeFont(String fontFamily, FontStyle style, int size, int lineSpacing) {
+        this.drawable.changeFont(fontFamily, style == FontStyle.BOLD, style == FontStyle.ITALIC, style == FontStyle.UNDERLINE, size, lineSpacing);
     }
 
     /**
@@ -128,7 +141,20 @@ public class TextBlock {
      */
     @SuppressWarnings("unused")
     public void changeFont(String fontFamily, EnumSet<FontStyle> style, int size) {
-        this.drawable.changeFont(fontFamily, style.contains(FontStyle.BOLD), style.contains(FontStyle.ITALIC), style.contains(FontStyle.UNDERLINE), size);
+        this.drawable.changeFont(fontFamily, style.contains(FontStyle.BOLD), style.contains(FontStyle.ITALIC), style.contains(FontStyle.UNDERLINE), size, this.drawable.getLineSpacing());
+    }
+
+    /**
+     * Change the font according to the new specification.
+     * @param fontFamily name of the font family
+     *                   (e.g. "Arial", "Times New Roman", "Courier New")
+     * @param style      style of the font
+     *                   (e.g. {@code EnumSet.of(FontStyle.BOLD, FontStyle.ITALIC)})
+     * @param size       size of the font in pixels
+     * @param lineSpacing spacing between the lines of this Text Block
+     */
+    public void changeFont(String fontFamily, EnumSet<FontStyle> style, int size, int lineSpacing) {
+        this.drawable.changeFont(fontFamily, style.contains(FontStyle.BOLD), style.contains(FontStyle.ITALIC), style.contains(FontStyle.UNDERLINE), size, lineSpacing);
     }
 
     /**
@@ -159,5 +185,47 @@ public class TextBlock {
     @SuppressWarnings("unused")
     public void changePosition(int x, int y) {
         this.drawable.moveTo(x, y);
+    }
+
+    /**
+     * @return the x-coordinate (offset from left border) of the shape.
+     */
+    public int getPositionX() {
+        return this.drawable.getXPosition();
+    }
+
+    /**
+     * @return the y-coordinate (offset from left border) of the shape.
+     */
+    public int getPositionY() {
+        return this.drawable.getYPosition();
+    }
+
+    /**
+     * @return the width of the shape.
+     */
+    public int getWidth() {
+        return this.drawable.getWidth();
+    }
+
+    /**
+     * @return the height of the shape.
+     */
+    public int getHeight() {
+        return this.drawable.getHeight();
+    }
+
+    /**
+     * Controls automatic text wrapping mechanism.
+     * Lines that are too long get automatically wrapped into the next line.
+     * Manual text wrapping using '\n' is uneffected.
+     * @param maxWidth maximum width in pixels before the line will be wrapped. Set to 0 (or lower) to disable text wrapping.
+     */
+    public void wrapText(int maxWidth) {
+        if (maxWidth <= 0) {
+            this.drawable.disableTextWrapping();
+        } else {
+            this.drawable.enableTextWrapping(maxWidth);
+        }
     }
 }
