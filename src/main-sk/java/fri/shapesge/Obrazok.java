@@ -161,6 +161,48 @@ public class Obrazok {
     }
 
     /**
+     * Zmeň veľkosť obrázka.
+     * Ukotvenie obrázka [pozri zmenPolohu(x, y)] je stále horný ľavý roh obrázka, a bod otáčania [pozri zmenUhol(x, y)] je stred obrázka.
+     * @param newWidth the new width of the image.
+     * @param newHeight the new height of the image.
+     */
+    public void zmenVelkost(int novaSirka, int novaVyska) {
+        this.drawable.changeSize(novaSirka, novaVyska);
+    }
+
+    /**
+     * Prevráť obrázok po šírke.
+     * @param prevrateny Nastav TRUE pre prevrátený obrázok. Nastav FALSE pre pôvodnú orientáciu obrázka.
+     */
+    public void prevratHorizontalne(boolean prevrateny) {
+        this.drawable.flipHorizontal(prevrateny);
+    }
+
+    /**
+     * Prevráť obrázok po šírke.
+     * Táto metóda VŽDY prevráti obrázok.
+     */
+    public void prevratHorizontalne() {
+        this.drawable.flipHorizontal();
+    }
+
+    /**
+     * Prevráť obrázok po výške.
+     * @param prevrateny Nastav TRUE pre prevrátený obrázok. Nastav FALSE pre pôvodnú orientáciu obrázka.
+     */
+    public void prevratVertikalne(boolean prevrateny) {
+        this.drawable.flipVertical(prevrateny);
+    }
+
+    /**
+     * Prevráť obrázok po výške.
+     * Táto metóda VŽDY prevráti obrázok.
+     */
+    public void prevratVertikalne() {
+        this.drawable.flipVertical();
+    }
+
+    /**
      * @return x-ová súradnica (vzdialenosť od ľavého okraja) tvaru
      */
     public int getPoziciaX() {
