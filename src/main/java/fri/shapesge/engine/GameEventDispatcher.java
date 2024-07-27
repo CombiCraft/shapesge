@@ -32,7 +32,7 @@ class GameEventDispatcher {
 
     public synchronized void doEvents() {
         while (!this.eventQueue.isEmpty()) {
-            var event = this.eventQueue.pop();
+            QueuedEvent event = this.eventQueue.pollFirst();
             this.sendMessage(event);
         }
     }
@@ -42,7 +42,7 @@ class GameEventDispatcher {
             try {
                 Method method = target.getClass().getMethod(event.getMessage(), event.getParameterTypes());
                 method.invoke(target, event.getParameterValues());
-            } catch (NoSuchMethodException e) {
+            } catch (NullPointerException | NoSuchMethodException e) {
                 // do nothing here
             } catch (SecurityException | IllegalArgumentException | IllegalAccessException |
                      InvocationTargetException e) {
