@@ -7,6 +7,7 @@ import fri.shapesge.Square;
 import fri.shapesge.TextBlock;
 import fri.shapesge.Triangle;
 
+import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
@@ -21,9 +22,9 @@ public class Main {
         triangle.makeVisible();
 
         TextBlock t = new TextBlock("Say hello to this finely spaced out block of text in a TextBlock!", 0, 0);
-        t.changeFont("Serif", FontStyle.BOLD, 30, -10);
+        t.changeFont("Serif", FontStyle.BOLD, 15, 0);
         t.changeColor("blue");
-        t.wrapText(600);
+        t.wrapText(150);
         t.makeVisible();
 
 //        ImageData id = new ImageData("test.jpg");
@@ -32,10 +33,10 @@ public class Main {
 //        i.changeSize(50, 90);
 //        i.makeVisible();
 //        i.mirrorHorizontal(false);
-//        TextBlock t2 = new TextBlock("Foo Bar!!!", t.getWidth(), 0);
-//        t2.changeFont("Sans", FontStyle.BOLD, 30);
-//        t2.changeColor("red");
-//        t2.makeVisible();
+        TextBlock t2 = new TextBlock("Foo Bar!!!", t.getWidth(), 0);
+        t2.changeFont("Sans", FontStyle.BOLD, 30);
+        t2.changeColor("red");
+        t2.makeVisible();
 
 //        ImageData id = new ImageData("test.jpg");
 //        System.out.format("%d x %d%n", id.getWidth(), id.getHeight());
