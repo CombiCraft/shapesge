@@ -20,9 +20,10 @@ public class Main {
         Triangle triangle = new Triangle();
         triangle.makeVisible();
 
-        TextBlock t = new TextBlock("Boo from\nSBGE");
-        t.changeFont("Serif", FontStyle.BOLD, 30);
+        TextBlock t = new TextBlock("Say hello to this finely spaced out block of text in a TextBlock!", 0, 0);
+        t.changeFont("Serif", FontStyle.BOLD, 30, -10);
         t.changeColor("blue");
+        t.wrapText(600);
         t.makeVisible();
 
 //        ImageData id = new ImageData("test.jpg");
@@ -31,6 +32,15 @@ public class Main {
 //        i.changeSize(50, 90);
 //        i.makeVisible();
 //        i.mirrorHorizontal(false);
+//        TextBlock t2 = new TextBlock("Foo Bar!!!", t.getWidth(), 0);
+//        t2.changeFont("Sans", FontStyle.BOLD, 30);
+//        t2.changeColor("red");
+//        t2.makeVisible();
+
+//        ImageData id = new ImageData("test.jpg");
+//        System.out.format("%d x %d%n", id.getWidth(), id.getHeight());
+//        Image i = new Image(id);
+//        i.makeVisible();
 
         Circle randomCircle = new Circle(100, 100);
         randomCircle.changeColor("red");
