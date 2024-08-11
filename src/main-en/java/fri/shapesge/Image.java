@@ -276,8 +276,6 @@ public class Image {
     public void changePosition(int x, int y) {
         this.drawable.moveTo(x, y);
     }
-<<<<<<< Updated upstream
-=======
 
     /**
      * Resize the image.
@@ -355,5 +353,4 @@ public class Image {
     public int getAngle() {
         return this.drawable.getAngle();
     }
->>>>>>> Stashed changes
 }

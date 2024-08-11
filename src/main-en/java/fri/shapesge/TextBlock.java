@@ -196,19 +196,6 @@ public class TextBlock {
 
     /**
      * Change the font according to the new specification.
-     * @param fontFamily name of the font family
-     *                   (e.g. "Arial", "Times New Roman", "Courier New")
-     * @param style      style of the font
-     *                   (e.g. {@link FontStyle#BOLD}, {@link FontStyle#ITALIC}, {@link FontStyle#UNDERLINE})
-     * @param size       size of the font in pixels
-     * @param lineSpacing spacing between the lines of this Text Block
-     */
-    public void changeFont(String fontFamily, FontStyle style, int size, int lineSpacing) {
-        this.drawable.changeFont(fontFamily, style == FontStyle.BOLD, style == FontStyle.ITALIC, style == FontStyle.UNDERLINE, size, lineSpacing);
-    }
-
-    /**
-     * Change the font according to the new specification.
      * <p>
      * This will also <b>change the width and height</b> of the {@code TextBlock}.
      * </p>
@@ -290,16 +277,6 @@ public class TextBlock {
      *                   <p>
      *                    This is only applicable to multi-line {@code TextBlock}s.
      *                   </p>
-     */
-    public void changeFont(String fontFamily, EnumSet<FontStyle> style, int size, int lineSpacing) {
-        this.drawable.changeFont(fontFamily, style.contains(FontStyle.BOLD), style.contains(FontStyle.ITALIC), style.contains(FontStyle.UNDERLINE), size, lineSpacing);
-
-     * @param fontFamily name of the font family
-     *                   (e.g. "Arial", "Times New Roman", "Courier New")
-     * @param style      style of the font
-     *                   (e.g. {@code EnumSet.of(FontStyle.BOLD, FontStyle.ITALIC)})
-     * @param size       size of the font in pixels
-     * @param lineSpacing spacing between the lines of this Text Block
      */
     public void changeFont(String fontFamily, EnumSet<FontStyle> style, int size, int lineSpacing) {
         this.drawable.changeFont(fontFamily, style.contains(FontStyle.BOLD), style.contains(FontStyle.ITALIC), style.contains(FontStyle.UNDERLINE), size, lineSpacing);
