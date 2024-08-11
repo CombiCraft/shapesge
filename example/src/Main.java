@@ -20,10 +20,18 @@ public class Main {
         Triangle triangle = new Triangle();
         triangle.makeVisible();
 
+<<<<<<< Updated upstream
         TextBlock t = new TextBlock("Boo from\nSBGE");
         t.changeFont("Serif", FontStyle.BOLD, 30);
         t.changeColor("blue");
+=======
+        TextBlock t = new TextBlock("Say hello to this finely spaced out block of text in a TextBlock!", 0, 0);
+        t.changeFont("Serif", FontStyle.BOLD, 15, 0);
+//        t.changeColor("blue");
+//        t.wrapText(150);
+>>>>>>> Stashed changes
         t.makeVisible();
+        System.out.printf("%s %s\n", t.getHeight(), t.getWidth());
 
         ImageData id = new ImageData("test.jpg");
         System.out.format("%d x %d%n", id.getWidth(), id.getHeight());
