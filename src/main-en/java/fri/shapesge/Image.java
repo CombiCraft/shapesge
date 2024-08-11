@@ -221,14 +221,22 @@ public class Image {
      * @param imagePath the <b>absolute or relative file path</b> to the image as {@link String}
      *                  <p>(e.g. {@code "C:\folder\image.png"}, {@code "folder/image.png"}).</p>
      * @throws fri.shapesge.engine.ShapesGEException if the file doesn't exist on that path
-     * @implNote This will redraw the image at its original size and orientation.
-     *           <p>If you need to preserve the size and orientation across the changes, use {@link Image#changeImageAndPreserveParameters(String)}.</p>
+     * @implNote This method will draw the new Image in its original size and mirroring.
+     *           <p>If you need to preserve the size and mirroring across the changes, use {@link Image#changeImageAndPreserveParameters(String)}.</p>
      */
     @SuppressWarnings("unused")
     public void changeImage(String imagePath) {
         this.changeImage(new ImageData(imagePath));
     }
 
+    /**
+     * Change the drawn image.
+     * @param imagePath the <b>absolute or relative file path</b> to the image as {@link String}
+     *                  <p>(e.g. {@code "C:\folder\image.png"}, {@code "folder/image.png"}).</p>
+     * @throws fri.shapesge.engine.ShapesGEException if the file doesn't exist on that path
+     * @implNote This method will draw the new Image in the same size and mirroring as the current one.
+     *           <p>If you need to always get the original, use {@link Image#changeImage(String)}.</p>
+     */
     public void changeImageAndPreserveParameters(String imagePath) {
         this.changeImageAndPreserveParameters(new ImageData(imagePath));
     }
@@ -289,7 +297,7 @@ public class Image {
 
     /**
      * Mirror the image horizontally.
-     * @param mirrored Set to TRUE to make the image mirrored. Set to FALSE to get the original orientation.
+     * @param mirrored Use {@code true} to make the image mirrored. Use {@code false} to get the original orientation.
      */
     public void mirrorHorizontal(boolean mirrored) {
         this.drawable.flipHorizontal(mirrored);
@@ -305,7 +313,7 @@ public class Image {
 
     /**
      * Mirror the image vertically.
-     * @param mirrored Set to TRUE to make the image mirrored. Set to FALSE to get the original orientation.
+     * @param mirrored Use {@code true} to make the image mirrored. Use {@code false} to get the original orientation.
      */
     public void mirrorVertical(boolean mirrored) {
         this.drawable.flipVertical(mirrored);
@@ -320,35 +328,37 @@ public class Image {
     }
 
     /**
-     * @return the shape's top left corner x-coordinate (offset from left border of the game window).
+     * @return the x-coordinate of the shape's top left corner.
+     * <p>The x-coordinate is the distance (in pixels) from the <b>left border</b> of the game window.</p>
      */
     public int getPositionX() {
         return this.drawable.getXPosition();
     }
 
     /**
-     * @return the shape's top left corner y-coordinate (offset from top border of the game window).
+     * @return the y-coordinate of the shape's top left corner.
+     * <p>The y-coordinate is the distance (in pixels) from the <b>top border</b> of the game window.</p>
      */
     public int getPositionY() {
         return this.drawable.getYPosition();
     }
 
     /**
-     * @return the width of the shape.
+     * @return the width of the shape in <b>pixels</b>.
      */
     public int getWidth() {
         return this.drawable.getWidth();
     }
 
     /**
-     * @return the height of the shape.
+     * @return the height of the shape in <b>pixels</b>.
      */
     public int getHeight() {
         return this.drawable.getHeight();
     }
 
     /**
-     * @return the angle of the shape.
+     * @return the angle of the shape in <b>degrees</b>.
      */
     public int getAngle() {
         return this.drawable.getAngle();

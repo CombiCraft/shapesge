@@ -319,7 +319,7 @@ public class TextBlock {
         this.drawable.moveTo(x, y);
     }
     /**
-     * @return the x-coorindate of the shape's top left corner.
+     * @return the x-coordinate of the shape's top left corner.
      * <p>The x-coordinate is the distance (in pixels) from the <b>left border</b> of the game window.</p>
      */
     public int getPositionX() {
@@ -327,7 +327,7 @@ public class TextBlock {
     }
 
     /**
-     * @return the y-coorindate of the shape's top left corner.
+     * @return the y-coordinate of the shape's top left corner.
      * <p>The y-coordinate is the distance (in pixels) from the <b>top border</b> of the game window.</p>
      */
     public int getPositionY() {

@@ -20,12 +20,13 @@ public class StressTest {
         this.images.add(e);
         e.makeVisible();
         Random r = new Random();
-        for (Image image : this.images) {
+        var image = this.images.get(this.images.size() - 1);
+//        for (Image image : this.images) {
             image.changePosition(r.nextInt(1000), r.nextInt(1000));
             image.changeSize(r.nextInt(200) + 84, r.nextInt(100) + 78);
             image.changeAngle(r.nextInt(360));
             image.mirrorVertical();
             image.mirrorVertical();
-        }
+//        }
     }
 }
