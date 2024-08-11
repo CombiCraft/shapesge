@@ -276,7 +276,9 @@ public class Image {
     public void changePosition(int x, int y) {
         this.drawable.moveTo(x, y);
     }
-    
+<<<<<<< Updated upstream
+=======
+
     /**
      * Resize the image.
      * The image will still be anchored from the top left, and rotated around its center.
@@ -353,4 +355,5 @@ public class Image {
     public int getAngle() {
         return this.drawable.getAngle();
     }
+>>>>>>> Stashed changes
 }
