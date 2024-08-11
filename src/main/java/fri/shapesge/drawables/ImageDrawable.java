@@ -19,9 +19,21 @@ public class ImageDrawable extends TranslatableDrawable {
         this.original = image;
     }
 
-    public void changeImage(BufferedImage image) {
+    public void changeImage(BufferedImage image, boolean preserveParameters) {
+        if (!preserveParameters) {
+            this.mirroredHorizontal = false;
+            this.mirroredVertical = false;
+        } else {
+            int sizeX = this.getHeight();
+            int sizeY = this.getWidth();
+        }
+
         this.image = image;
         this.original = this.image;
+
+        if (preserveParameters) {
+
+        }
 
         Game.getGame().somethingHasChanged();
     }
