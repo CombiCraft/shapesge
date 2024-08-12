@@ -6,8 +6,8 @@ import fri.shapesge.drawables.ImageDrawable;
  * Image is an image drawn on the game's window (the Canvas).
  * It can load and display PNG and JPEG, including transparency (alpha channel).
  * To load the image, use the <b>absolute or relative file path</b> of your image as {@link String}.
- *
- * <h3>Absolute file path</h3>
+ * <br><br>
+ * <h3>How to use the absolute file path</h3>
  * <p>This is the full system path, starting at the system root.</p>
  * <p>
  *     <b>On Windows:</b>
@@ -33,14 +33,16 @@ import fri.shapesge.drawables.ImageDrawable;
  * </p>
  * <b><u>IMPORTANT NOTE:</u></b> Do not use Absolute file path for serious projects (including semester works).
  * If you have to open the project on a different computer, it won't be able to find any files!
- * Instead, please use the Relative File Path.
- * <h3>Relative file path</h3>
+ * Instead, please use the Relative File Path when possible.
+ * <br><br>
+ * <h3>How to use the relative file path</h3>
  * <p>This is the file path relative to your project's folder.</p>
  * <p>
  *     <b>In BlueJ:</b>
  *     <ol>
  *         <li>Copy and paste the image file to your project's folder</li>
- *         <li>Use just the file name, no path needed (e.g. {@code "image.png"}</li>
+ *         <li>Use just the file name, no path needed (e.g. {@code "image.png"})
+ *         (the path is <b>relative</b> to the project folder)</li>
  *         <p>You can also put these files into folders in your project. If you do that, use {@code "folder/image.png"}.</p>
  *     </ol>
  *     <b>In IntelliJ IDEA:</b>
@@ -50,7 +52,8 @@ import fri.shapesge.drawables.ImageDrawable;
  *         <li>Right click the new folder</li>
  *         <li>Select <b>Mark Directory as -> Resources root</b></li>
  *         <li>Copy and paste the image file to this folder</li>
- *         <li>Use just the file name, no path needed (e.g. {@code "image.png"}</li>
+ *         <li>Use just the file name, no path needed (e.g. {@code "image.png"})
+ *         (the path is <b>relative</b> to the Resources folder)</li>
  *         <p>You can also put these files into folders in your project. If you do that, use {@code "folder/image.png"}.</p>
  *         <p>You can also use Java's implementation of Resources to load and process your Images.</p>
  *     </ol>
@@ -133,13 +136,12 @@ public class Image {
      * @implNote If you have multiple shapes on top of each other (overlapping),
      * the shapes will be displayed in the order you send this message in.
      * <p>
-     *     For example, if you're creating a building that consists of a {@link Rectangle} as a wall and an {@code Image}
-     *     to display windows, do this:
+     *     For example, if you need to place a {@link Circle} on top of a {@link Square}, do this:
      *     <blockquote><pre>
-     *         yourRectangle.makeVisible();
-     *         yourImage.makeVisible();
+     *         yourSquare.makeVisible();
+     *         yourCircle.makeVisible();
      *     </pre></blockquote>
-     *     If you swap these two lines, <b>the image will be hidden below the rectangle.</b>
+     *     If you swap these two lines, <b>the {@link Circle} will be hidden behind the {@link Square} .</b>
      * </p>
      */
     @SuppressWarnings("unused")
@@ -290,9 +292,10 @@ public class Image {
     /**
      * Resize the image.
      * The image will still be anchored from the top left, and rotated around its center.
-     * @param newWidth the new width of the image.
-     * @param newHeight the new height of the image.
-     * @throws IllegalArgumentException if the width or height is lower than 0.
+     * @param newWidth the new width of the shape.
+     *                The width cannot be lower than 0 ({@code newWidth < 0}).
+     * @param newHeight the new height of the shape.
+     *                The height cannot be lower than 0 ({@code newHeight < 0}).
      */
     public void changeSize(int newWidth, int newHeight) {
         this.drawable.changeSize(newWidth, newHeight);

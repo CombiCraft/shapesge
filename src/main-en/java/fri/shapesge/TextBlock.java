@@ -41,7 +41,8 @@ public class TextBlock {
      *     with the given position being the <b>top left corner</b>.
      * </p>
      * <p>
-     *     You can change the position later using the {@link TextBlock#changePosition(int x, int y)} method.
+     *     You can change the position, font and color later using the {@link TextBlock#changePosition(int x, int y)},
+     *     {@link TextBlock#changeFont} and {@link TextBlock#changeColor} methods.
      * </p>
      * @param text text to be displayed
      * @param x x-coordinate of the text
@@ -71,7 +72,8 @@ public class TextBlock {
      * </li></ul>
      * </p>
      * <p>
-     *     You can change the position later using the {@link TextBlock#changePosition(int x, int y)} method.
+     *     You can change the position, font and color later using the {@link TextBlock#changePosition(int x, int y)},
+     *     {@link TextBlock#changeFont} and {@link TextBlock#changeColor} methods.
      * </p>
      * @param text text to be displayed
      */
@@ -81,17 +83,16 @@ public class TextBlock {
     }
 
     /**
-     * Make this text visible.
-     * If it was already visible, do nothing.
+     * Make this shape visible. If it was already visible, do nothing.
      * @implNote If you have multiple shapes on top of each other (overlapping),
      * the shapes will be displayed in the order you send this message in.
      * <p>
-     *     For example, if you're creating a button that consists of a {@link Rectangle} and a label that's {@code TextBlock}, do this:
+     *     For example, if you need to place a {@link Circle} on top of a {@link Square}, do this:
      *     <blockquote><pre>
-     *         yourRectangle.makeVisible();
-     *         yourTextBlock.makeVisible();
+     *         yourSquare.makeVisible();
+     *         yourCircle.makeVisible();
      *     </pre></blockquote>
-     *     If you swap these two lines, <b>the text will be hidden below the rectangle.</b>
+     *     If you swap these two lines, <b>the {@link Circle} will be hidden behind the {@link Square} .</b>
      * </p>
      */
     @SuppressWarnings("unused")

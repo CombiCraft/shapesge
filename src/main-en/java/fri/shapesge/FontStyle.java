@@ -1,7 +1,7 @@
 package fri.shapesge;
 
 /**
- * Possible font styles.
+ * Possible font styles for use with {@link TextBlock}.
  */
 @SuppressWarnings("unused")
 public enum FontStyle {
