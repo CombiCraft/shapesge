@@ -220,6 +220,7 @@ public class Image {
      * Change the drawn image.
      * @param imagePath the <b>absolute or relative file path</b> to the image as {@link String}
      *                  <p>(e.g. {@code "C:\folder\image.png"}, {@code "folder/image.png"}).</p>
+     *                  <p>See the {@link Image} class description for more information.</p>
      * @throws fri.shapesge.engine.ShapesGEException if the file doesn't exist on that path
      * @implNote This method will draw the new Image in its original size and mirroring.
      *           <p>If you need to preserve the size and mirroring across the changes, use {@link Image#changeImageAndPreserveParameters(String)}.</p>
@@ -233,6 +234,7 @@ public class Image {
      * Change the drawn image.
      * @param imagePath the <b>absolute or relative file path</b> to the image as {@link String}
      *                  <p>(e.g. {@code "C:\folder\image.png"}, {@code "folder/image.png"}).</p>
+     *                  <p>See the {@link Image} class description for more information.</p>
      * @throws fri.shapesge.engine.ShapesGEException if the file doesn't exist on that path
      * @implNote This method will draw the new Image in the same size and mirroring as the current one.
      *           <p>If you need to always get the original, use {@link Image#changeImage(String)}.</p>
