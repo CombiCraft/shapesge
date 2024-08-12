@@ -1,70 +1,75 @@
 package fri.shapesge;
 
-import fri.shapesge.drawables.EllipticalDrawable;
+import fri.shapesge.drawables.RectangularDrawable;
 
 import java.awt.Color;
 
 /**
- * Circle is a circle drawn on the game's window (the Canvas).
+ * Rectangle is a rectangle drawn on the game's window (the Canvas).
  *
  * @author original: Michael Kölling and David J. Barnes
  * @author engine: Ján Janech
- * @version 1.1  (July 2024)
+ * @version 1.1 (July 2024)
  */
-
 @SuppressWarnings("unused")
-public class Circle {
-    private final EllipticalDrawable drawable;
+public class Rectangle {
+    private final RectangularDrawable drawable;
 
     /**
-     * Create a new Circle on the default position with default parameters.
+     * Create a new Rectangle on the default position with default parameters.
      * <p>
      *     Default parameters:
      *     <ul>
-     *         <li>Diameter: 30 pixels</li>
-     *         <li>Position X: 20 pixels from the left border of the canvas</li>
-     *         <li>Position Y: 60 pixels from the top border of the canvas</li>
-     *         <li>Color: blue</li>
+     *         <li>Width: 30 pixels</li>
+     *         <li>Height: 60 pixels</li>
+     *         <li>Position X: 60 pixels from the left border of the canvas</li>
+     *         <li>Position Y: 50 pixels from the top border of the canvas</li>
+     *         <li>Color: red</li>
      *     </ul>
      *     <p>
-     *          You can change the position, size and color later using the {@link Circle#changePosition(int x, int y)},
-     *          {@link Circle#changeSize(int newDiameter)} and {@link Circle#changeColor} methods.
+     *          You can change the position, size and color later using the {@link Rectangle#changePosition(int x, int y)},
+     *          {@link Rectangle#changeSize(int width, int height)} and {@link Rectangle#changeColor(String)} methods.
      *     </p>
      * </p>
      */
     @SuppressWarnings("unused")
-    public Circle() {
-        this(20, 60);
+    public Rectangle() {
+        this(60, 50);
     }
 
     /**
-     * Create a new Circle on the given position with default parameters.
+     * Create a new Rectangle on the given position with default parameters.
      * <p>
      *     Default parameters:
      *     <ul>
-     *         <li>Diameter: 30 pixels</li>
-     *         <li>Color: blue</li>
+     *         <li>Width: 30 pixels</li>
+     *         <li>Height: 60 pixels</li>
+     *         <li>Color: red</li>
      *     </ul>
      *     <p>
-     *          You can change the position, size and color later using the {@link Circle#changePosition(int x, int y)},
-     *          {@link Circle#changeSize(int newDiameter)} and {@link Circle#changeColor} methods.
+     *          You can change the position, size and color later using the {@link Rectangle#changePosition(int x, int y)},
+     *          {@link Rectangle#changeSize(int width, int height)} and {@link Rectangle#changeColor(String)} methods.
      *     </p>
      * </p>
+     * @param x x-coordinate of the shape
+     *          (distance from left border of the game window)
+     * @param y y-coordinate of the shape
+     *          (distance from top border of the game window)
      */
     @SuppressWarnings("unused")
-    public Circle(int x, int y) {
-        this.drawable = new EllipticalDrawable(x, y, 30, 30, Color.blue);
+    public Rectangle(int x, int y) {
+        this.drawable = new RectangularDrawable(x, y, 30, 60, Color.red);
     }
 
     /**
-     * Make this circle visible. If it was already visible, do nothing.
+     * Make this rectangle visible. If it was already visible, do nothing.
      * @implNote If you have multiple shapes on top of each other (overlapping),
      * the shapes will be displayed in the order you send this message in.
      * <p>
      *     For example, if you need to place a {@link Circle} on top of a {@link Square}, do this:
      *     <blockquote><pre>
-     *         yourSquare.makeVisible();
-     *         yourCircle.makeVisible();
+     *         yourRectangle.makeVisible();
+     *         yourImage.makeVisible();
      *     </pre></blockquote>
      *     If you swap these two lines, <b>the {@link Circle} will be hidden behind the {@link Square} .</b>
      * </p>
@@ -75,7 +80,7 @@ public class Circle {
     }
 
     /**
-     * Make this circle invisible. If it was already invisible, do nothing.
+     * Make this rectangle invisible. If it was already invisible, do nothing.
      */
     @SuppressWarnings("unused")
     public void makeInvisible() {
@@ -83,7 +88,8 @@ public class Circle {
     }
 
     /**
-     * Move the circle a few pixels to the right.
+     * Move the rectangle a few pixels to the right.
+     * This method always moves the shape by 20 pixels.
      */
     @SuppressWarnings("unused")
     public void moveRight() {
@@ -91,7 +97,7 @@ public class Circle {
     }
 
     /**
-     * Move the circle a few pixels to the left.
+     * Move the rectangle a few pixels to the left.
      * This method always moves the shape by 20 pixels.
      */
     @SuppressWarnings("unused")
@@ -100,7 +106,7 @@ public class Circle {
     }
 
     /**
-     * Move the circle a few pixels up.
+     * Move the rectangle a few pixels up.
      * This method always moves the shape by 20 pixels.
      */
     @SuppressWarnings("unused")
@@ -109,7 +115,7 @@ public class Circle {
     }
 
     /**
-     * Move the circle a few pixels down.
+     * Move the rectangle a few pixels down.
      * This method always moves the shape by 20 pixels.
      */
     @SuppressWarnings("unused")
@@ -136,7 +142,6 @@ public class Circle {
      * Negative numbers ({@code distance < 0}) move the shape up.
      * Zero ({@code distance == 0} does not move the shape at all.
      */
-
     @SuppressWarnings("unused")
     public void moveVertical(int distance) {
         this.drawable.moveBy(0, distance);
@@ -144,12 +149,14 @@ public class Circle {
 
     /**
      * Resize the shape.
-     * @param newDiameter the new width and height of the shape.
-     *                The size cannot be lower than 0 ({@code newDiameter < 0}).
+     * @param newWidth the new width of the shape.
+     *                The width cannot be lower than 0 ({@code newWidth < 0}).
+     * @param newHeight the new height of the shape.
+     *                The height cannot be lower than 0 ({@code newHeight < 0}).
      */
     @SuppressWarnings("unused")
-    public void changeSize(int newDiameter) {
-        this.drawable.changeSize(newDiameter, newDiameter);
+    public void changeSize(int newWidth, int newHeight) {
+        this.drawable.changeSize(newWidth, newHeight);
     }
 
     /**
@@ -171,9 +178,9 @@ public class Circle {
 
     /**
      * Change the position according to the parameters.
-     * @param x x-coordinate of the circle
+     * @param x x-coordinate of the rectangle
      *          (distance from left border of the canvas)
-     * @param y y-coordinate of the circle
+     * @param y y-coordinate of the rectangle
      *          (distance from top border of the canvas)
      */
     @SuppressWarnings("unused")
@@ -198,9 +205,16 @@ public class Circle {
     }
 
     /**
-     * @return the diameter (width) of the shape in <b>pixels</b>.
+     * @return the width of the shape in <b>pixels</b>.
      */
-    public int getDiameter() {
-        return this.drawable.getDiameterX();
+    public int getWidth() {
+        return this.drawable.getWidth();
+    }
+
+    /**
+     * @return the height of the shape in <b>pixels</b>.
+     */
+    public int getHeight() {
+        return this.drawable.getHeight();
     }
 }
