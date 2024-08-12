@@ -84,6 +84,9 @@ public class ImageDrawable extends TranslatableDrawable {
     }
 
     public void changeSize(int newWidth, int newHeight) {
+        if (newWidth < 0 || newHeight < 0) {
+            throw new IllegalArgumentException("Desired width or height is lower than 0");
+        }
         this.updateImage(newWidth, newHeight, this.mirroredHorizontal, this.mirroredVertical);
     }
 

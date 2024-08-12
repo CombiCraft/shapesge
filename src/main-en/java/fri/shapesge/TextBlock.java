@@ -283,14 +283,16 @@ public class TextBlock {
     }
 
     /**
-     * Change the color of the text in the entire block.
+     * Change the color of all text in the TextBlock.
      * @param newColor new color from <b>Colors in sbge.ini</b> or in <b>plain #rrggbb format</b> as {@link String} (e.g. {@code "blue"}, {@code "yellow"}, {@code "#ba9000"}).
      *                 <h3>Colors in sbge.ini:</h3>
      *                 <p>The default supported colors are {@code "red"}, {@code "blue"}, {@code "yellow"}, {@code "green"}, {@code "magenta"}, {@code "white"}, {@code "brown"} and {@code "black"}</p>
      *                 <p>Visit <a href="https://github.com/infjava/shapesge/wiki">ShapesGE Wiki on GitHub</a> to learn more.</p>
      *                 <h3>Plain #rrggbb:</h3>
-     *                 <p>This is a HEX color code. To find this code for your desired color, use an online HEX color picker tool.</p>
-     *                 <p>Visit <a href="https://w3schools.com/colors/colors-hexadecimal.asp">W3Schools' article on HEX colors</a> to learn more.</p>
+     *                 <p>
+     *                     This is a HEX color code. To find this code for your desired color, use an online HEX color picker tool
+     *                     (on e.g. <a href="https://g.co/kgs/RmaEk8D">Google</a>, <a href="https://www.bing.com/search?q=hex+color+picker">Bing</a>, etc.)
+     *                 </p>
      */
     @SuppressWarnings("unused")
     public void changeColor(String newColor) {

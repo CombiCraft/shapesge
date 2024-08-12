@@ -195,8 +195,8 @@ public class Image {
     /**
      * Move the shape horizontally by a given amount of pixels.
      * @param distance how many <b>pixels</b> to move the object.
-     * Positive numbers ({@code distance > 0}) move the shape down.
-     * Negative numbers ({@code distance < 0}) move the shape up.
+     * Positive numbers ({@code distance > 0}) move the shape to the right.
+     * Negative numbers ({@code distance < 0}) move the shape to the left.
      * Zero ({@code distance == 0} does not move the shape at all.
      */
     @SuppressWarnings("unused")
@@ -292,6 +292,7 @@ public class Image {
      * The image will still be anchored from the top left, and rotated around its center.
      * @param newWidth the new width of the image.
      * @param newHeight the new height of the image.
+     * @throws IllegalArgumentException if the width or height is lower than 0.
      */
     public void changeSize(int newWidth, int newHeight) {
         this.drawable.changeSize(newWidth, newHeight);

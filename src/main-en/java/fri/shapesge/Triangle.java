@@ -5,7 +5,12 @@ import fri.shapesge.drawables.TriangularDrawable;
 import java.awt.Color;
 
 /**
- * A triangle that can be manipulated and that draws itself on a canvas.
+ * Triangle is an Isosceles triangle (<b>Δ</b>) drawn on the game's window (the Canvas).
+ * This triangle consists of a horizontal base and two equally long sides, with the tip pointing upwards.
+ * <p>
+ *     <u>IMPORTANT NOTE:</u> Unlike other shapes, the position of Triangle is calculated based on the
+ *     tip rather than the top left corner.
+ * </p>
  *
  * @author original: Michael Kölling and David J. Barnes
  * @author engine: Ján Janech
@@ -17,7 +22,16 @@ public class Triangle {
     private final TriangularDrawable drawable;
 
     /**
-     * Create a new triangle at default position with default color.
+     * Create a new triangle on the default position with default parameters.
+     * <p>
+     *     Default parameters:
+     *     <ul>
+     *         <li>Width: 40 pixels</li>
+     *         <li>Height: 30 pixels</li>
+     *         <li>Position X: 50 pixels from the left border of the canvas</li>
+     *         <li>Position Y: 15 pixels from the top border of the canvas</li>
+     *     </ul>
+     * </p>
      */
     @SuppressWarnings("unused")
     public Triangle() {
@@ -25,11 +39,18 @@ public class Triangle {
     }
 
     /**
-     * Create a new triangle at a given position with default color.
-     * @param x x-coordinate of the triangle
-     *          (distance from left border of the canvas)
-     * @param y y-coordinate of the triangle
-     *          (distance from top border of the canvas)
+     * Create a new triangle on the default position with default parameters.
+     * <p>
+     *     Default parameters:
+     *     <ul>
+     *         <li>Width: 40 pixels</li>
+     *         <li>Height: 30 pixels</li>
+     *     </ul>
+     * </p>
+     * @param x x-coordinate of the text
+     *          (distance from the left border of the canvas)
+     * @param y y-coordinate of the text
+     *          (distance from the top border of the canvas)
      */
     @SuppressWarnings("unused")
     public Triangle(int x, int y) {
@@ -38,6 +59,17 @@ public class Triangle {
 
     /**
      * Make this triangle visible. If it was already visible, do nothing.
+     * @implNote If you have multiple shapes on top of each other (overlapping),
+     * the shapes will be displayed in the order you send this message in.
+     * <p>
+     *     For example, if you're creating a building that consists of a {@link Rectangle} as a wall and an {@code Image}
+     *     to display windows, do this:
+     *     <blockquote><pre>
+     *         yourRectangle.makeVisible();
+     *         yourImage.makeVisible();
+     *     </pre></blockquote>
+     *     If you swap these two lines, <b>the image will be hidden below the rectangle.</b>
+     * </p>
      */
     @SuppressWarnings("unused")
     public void makeVisible() {
@@ -54,6 +86,7 @@ public class Triangle {
 
     /**
      * Move the triangle a few pixels to the right.
+     * This method always moves the shape by 20 pixels.
      */
     @SuppressWarnings("unused")
     public void moveRight() {
@@ -62,6 +95,7 @@ public class Triangle {
 
     /**
      * Move the triangle a few pixels to the left.
+     * This method always moves the shape by 20 pixels.
      */
     @SuppressWarnings("unused")
     public void moveLeft() {
@@ -70,6 +104,7 @@ public class Triangle {
 
     /**
      * Move the triangle a few pixels up.
+     * This method always moves the shape by 20 pixels.
      */
     @SuppressWarnings("unused")
     public void moveUp() {
@@ -78,6 +113,7 @@ public class Triangle {
 
     /**
      * Move the triangle a few pixels down.
+     * This method always moves the shape by 20 pixels.
      */
     @SuppressWarnings("unused")
     public void moveDown() {
@@ -85,8 +121,11 @@ public class Triangle {
     }
 
     /**
-     * Move the triangle horizontally by 'distance' pixels.
-     * @param distance distance in pixels
+     * Move the shape horizontally by a given amount of pixels.
+     * @param distance how many <b>pixels</b> to move the object.
+     * Positive numbers ({@code distance > 0}) move the shape to the right.
+     * Negative numbers ({@code distance < 0}) move the shape to the left.
+     * Zero ({@code distance == 0} does not move the shape at all.
      */
     @SuppressWarnings("unused")
     public void moveHorizontal(int distance) {
@@ -94,8 +133,11 @@ public class Triangle {
     }
 
     /**
-     * Move the triangle vertically by 'distance' pixels.
-     * @param distance distance in pixels
+     * Move the shape vertically by a given amount of pixels.
+     * @param distance how many <b>pixels</b> to move the object.
+     * Positive numbers ({@code distance > 0}) move the shape down.
+     * Negative numbers ({@code distance < 0}) move the shape up.
+     * Zero ({@code distance == 0} does not move the shape at all.
      */
     @SuppressWarnings("unused")
     public void moveVertical(int distance) {
@@ -103,9 +145,10 @@ public class Triangle {
     }
 
     /**
-     * Change the size to the new size (in pixels). Size must be greater or equal 0.
-     * @param newHeight new height in pixels
-     * @param newWidth new width in pixels
+     * Resize the shape.
+     * @param newWidth the new width of the image.
+     * @param newHeight the new height of the image.
+     * @throws IllegalArgumentException if the width or height is lower than 0.
      */
     @SuppressWarnings("unused")
     public void changeSize(int newHeight, int newWidth) {
@@ -113,8 +156,16 @@ public class Triangle {
     }
 
     /**
-     * Change the color.
-     * @param newColor new color from palette or in #rrggbb format
+     * Change the color of the Triangle.
+     * @param newColor new color from <b>Colors in sbge.ini</b> or in <b>plain #rrggbb format</b> as {@link String} (e.g. {@code "blue"}, {@code "yellow"}, {@code "#ba9000"}).
+     *                 <h3>Colors in sbge.ini:</h3>
+     *                 <p>The default supported colors are {@code "red"}, {@code "blue"}, {@code "yellow"}, {@code "green"}, {@code "magenta"}, {@code "white"}, {@code "brown"} and {@code "black"}</p>
+     *                 <p>Visit <a href="https://github.com/infjava/shapesge/wiki">ShapesGE Wiki on GitHub</a> to learn more.</p>
+     *                 <h3>Plain #rrggbb:</h3>
+     *                 <p>
+     *                     This is a HEX color code. To find this code for your desired color, use an online HEX color picker tool
+     *                     (on e.g. <a href="https://g.co/kgs/RmaEk8D">Google</a>, <a href="https://www.bing.com/search?q=hex+color+picker">Bing</a>, etc.)
+     *                 </p>
      */
     @SuppressWarnings("unused")
     public void changeColor(String newColor) {
@@ -123,10 +174,11 @@ public class Triangle {
 
     /**
      * Change the position according to the parameters.
-     * @param x x-coordinate of the triangle
-     *          (distance from left border of the canvas)
-     * @param y y-coordinate of the triangle
-     *          (distance from top border of the canvas)
+     * <p>This will set the position of the tip of the Triangle.</p>
+     * @param x x-coordinate of the shape
+     *          (distance from left border of the game window)
+     * @param y y-coordinate of the shape
+     *          (distance from top border of the game window)
      */
     @SuppressWarnings("unused")
     public void changePosition(int x, int y) {
@@ -134,28 +186,30 @@ public class Triangle {
     }
 
     /**
-     * @return the x-coordinate (offset from left border) of the shape.
+     * @return the x-coordinate of the shape's top left corner.
+     * <p>The x-coordinate is the distance (in pixels) from the <b>left border</b> of the game window.</p>
      */
     public int getPositionX() {
         return this.drawable.getXPosition();
     }
 
     /**
-     * @return the y-coordinate (offset from left border) of the shape.
+     * @return the y-coordinate of the shape's top left corner.
+     * <p>The y-coordinate is the distance (in pixels) from the <b>top border</b> of the game window.</p>
      */
     public int getPositionY() {
         return this.drawable.getYPosition();
     }
 
     /**
-     * @return the width of the shape.
+     * @return the width of the shape in <b>pixels</b>.
      */
     public int getWidth() {
         return this.drawable.getWidth();
     }
 
     /**
-     * @return the height of the shape.
+     * @return the height of the shape in <b>pixels</b>.
      */
     public int getHeight() {
         return this.drawable.getHeight();
