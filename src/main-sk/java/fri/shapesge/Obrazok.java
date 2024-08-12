@@ -136,7 +136,7 @@ public class Obrazok {
      * @param dataObrazku dáta obrázku
      */
     public void zmenObrazok(DataObrazku dataObrazku) {
-        this.drawable.changeImage(dataObrazku.getImage());
+        this.drawable.changeImage(dataObrazku.getImage(), true);
     }
 
     /**
@@ -163,8 +163,8 @@ public class Obrazok {
     /**
      * Zmeň veľkosť obrázka.
      * Ukotvenie obrázka [pozri zmenPolohu(x, y)] je stále horný ľavý roh obrázka, a bod otáčania [pozri zmenUhol(x, y)] je stred obrázka.
-     * @param newWidth the new width of the image.
-     * @param newHeight the new height of the image.
+     * @param novaSirka the new width of the image.
+     * @param novaVyska the new height of the image.
      */
     public void zmenVelkost(int novaSirka, int novaVyska) {
         this.drawable.changeSize(novaSirka, novaVyska);
