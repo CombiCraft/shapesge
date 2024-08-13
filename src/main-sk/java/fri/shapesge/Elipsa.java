@@ -203,4 +203,18 @@ public class Elipsa {
     public int getPoziciaY() {
         return this.drawable.getYPosition();
     }
+
+    /**
+     * @return šírka tvaru v <b>pixeloch</b>.
+     */
+    public int getSirka() {
+        return this.drawable.getDiameterX();
+    }
+
+    /**
+     * @return výška tvaru v <b>pixeloch</b>.
+     */
+    public int getVyska() {
+        return this.drawable.getDiameterY();
+    }
 }
