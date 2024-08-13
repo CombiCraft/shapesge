@@ -1,18 +1,16 @@
 import fri.shapesge.Circle;
 import fri.shapesge.FontStyle;
 import fri.shapesge.Image;
-import fri.shapesge.ImageData;
 import fri.shapesge.Manager;
-import fri.shapesge.Square;
+import fri.shapesge.Stvorec;
 import fri.shapesge.TextBlock;
 import fri.shapesge.Triangle;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        Square square = new Square();
+        Stvorec square = new Stvorec();
         square.makeVisible();
 
         Circle circle = new Circle();

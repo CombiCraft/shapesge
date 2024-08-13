@@ -136,12 +136,12 @@ public class Image {
      * @implNote If you have multiple shapes on top of each other (overlapping),
      * the shapes will be displayed in the order you send this message in.
      * <p>
-     *     For example, if you need to place a {@link Circle} on top of a {@link Square}, do this:
+     *     For example, if you need to place a {@link Circle} on top of a {@link Stvorec}, do this:
      *     <blockquote><pre>
      *         yourSquare.makeVisible();
      *         yourCircle.makeVisible();
      *     </pre></blockquote>
-     *     If you swap these two lines, <b>the {@link Circle} will be hidden behind the {@link Square} .</b>
+     *     If you swap these two lines, <b>the {@link Circle} will be hidden behind the {@link Stvorec} .</b>
      * </p>
      */
     @SuppressWarnings("unused")
