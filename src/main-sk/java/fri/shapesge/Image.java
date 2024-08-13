@@ -82,7 +82,7 @@ public class Image {
      */
     @SuppressWarnings("unused")
     public Image(String imagePath) {
-        this(new ImageData(imagePath));
+        this(new DataObrazku(imagePath));
     }
 
     /**
@@ -93,11 +93,11 @@ public class Image {
      * <li>Position X: 0 pixels from the left border of the canvas</li>
      * <li>Position Y: 20 pixels from the top border of the canvas</li>
      * </p>
-     * @param imageData the {@link ImageData} for this image.
-     *                  <p>Use this method if you created {@link ImageData} manually.</p>
+     * @param imageData the {@link DataObrazku} for this image.
+     *                  <p>Use this method if you created {@link DataObrazku} manually.</p>
      */
     @SuppressWarnings("unused")
-    public Image(ImageData imageData) {
+    public Image(DataObrazku imageData) {
         this(imageData, 100, 100);
     }
 
@@ -114,20 +114,20 @@ public class Image {
      */
     @SuppressWarnings("unused")
     public Image(String imagePath, int x, int y) {
-        this(new ImageData(imagePath), x, y);
+        this(new DataObrazku(imagePath), x, y);
     }
 
     /**
      * Create a new image on the given position.
      *
-     * @param imageData the {@link ImageData} for this image.
-     *                  <p>Use this method if you created {@link ImageData} manually.</p>
+     * @param imageData the {@link DataObrazku} for this image.
+     *                  <p>Use this method if you created {@link DataObrazku} manually.</p>
      * @param x x-coordinate of the image
      *          (distance from left border of the canvas)
      * @param y y-coordinate of the image
      *          (distance from top border of the canvas)
      */
-    public Image(ImageData imageData, int x, int y) {
+    public Image(DataObrazku imageData, int x, int y) {
         this.drawable = new ImageDrawable(x, y, 0, imageData.getImage());
     }
 
@@ -229,7 +229,7 @@ public class Image {
      */
     @SuppressWarnings("unused")
     public void changeImage(String imagePath) {
-        this.changeImage(new ImageData(imagePath));
+        this.changeImage(new DataObrazku(imagePath));
     }
 
     /**
@@ -242,20 +242,20 @@ public class Image {
      *           <p>If you need to always get the original, use {@link Image#changeImage(String)}.</p>
      */
     public void changeImageAndPreserveParameters(String imagePath) {
-        this.changeImageAndPreserveParameters(new ImageData(imagePath));
+        this.changeImageAndPreserveParameters(new DataObrazku(imagePath));
     }
 
     /**
      * Change the drawn image.
-     * @param imageData the {@link ImageData} for this image.
-     *                  <p>Use this method if you created {@link ImageData} manually.</p>
+     * @param imageData the {@link DataObrazku} for this image.
+     *                  <p>Use this method if you created {@link DataObrazku} manually.</p>
      */
     @SuppressWarnings("unused")
-    public void changeImage(ImageData imageData) {
+    public void changeImage(DataObrazku imageData) {
         this.drawable.changeImage(imageData.getImage(), false);
     }
 
-    public void changeImageAndPreserveParameters(ImageData imageData) {
+    public void changeImageAndPreserveParameters(DataObrazku imageData) {
         this.drawable.changeImage(imageData.getImage(),true);
     }
 
