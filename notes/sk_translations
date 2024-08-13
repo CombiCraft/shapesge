@@ -172,3 +172,9 @@
         public int getVyska() {
             return this.drawable.getHeight();
         }
+
+        * @param x pozícia X vrchola trojuholníka.
+             * 	 Pozícia X je vzdialenosť od ľavého okraja plátna.
+             * @param y pozícia Y vrchola trojuholníka.
+             * 	 Pozícia X je vzdialenosť od horného okraja plátna.
+             */

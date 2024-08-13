@@ -2,7 +2,7 @@ import fri.shapesge.*;
 
 public class TriangleTest {
     public static void main(String[] args) {
-        var tri = new Triangle();
+        var tri = new Trojuholnik();
         tri.changePosition(300, 300);
         tri.makeVisible();
         tri.changeSize(-50, 50);

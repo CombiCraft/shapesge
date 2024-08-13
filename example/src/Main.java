@@ -4,7 +4,7 @@ import fri.shapesge.Image;
 import fri.shapesge.Manager;
 import fri.shapesge.Stvorec;
 import fri.shapesge.TextBlock;
-import fri.shapesge.Triangle;
+import fri.shapesge.Trojuholnik;
 
 import java.util.Random;
 
@@ -16,7 +16,7 @@ public class Main {
         Circle circle = new Circle();
         circle.makeVisible();
 
-        Triangle triangle = new Triangle();
+        Trojuholnik triangle = new Trojuholnik();
         triangle.makeVisible();
 
         TextBlock t = new TextBlock("Boo from\nSBGE");
