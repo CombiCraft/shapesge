@@ -38,7 +38,7 @@ public class Kruh {
     }
 
     /**
-     * Vytvorí nový kruh na predvolenej pozícii s predvolenými parametrami.
+     * Vytvorí nový Kruh na danej pozícii s predvolenými parametrami.
      * <p>
      *     Predvolené parametre:
      *     <ul>
