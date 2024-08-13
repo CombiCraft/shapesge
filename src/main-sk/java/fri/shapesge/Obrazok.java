@@ -65,7 +65,7 @@ import fri.shapesge.drawables.ImageDrawable;
  * @version 2.0  (August 2024)
  */
 @SuppressWarnings("unused")
-public class Image {
+public class Obrazok {
     private final ImageDrawable drawable;
 
     /**
@@ -76,13 +76,13 @@ public class Image {
      * <li>Position X: 0 pixels from the left border of the canvas</li>
      * <li>Position Y: 20 pixels from the top border of the canvas</li>
      * </p>
-     * @param imagePath the <b>absolute or relative file path</b> to the image as {@link String}
+     * @param cestaKObrazku the <b>absolute or relative file path</b> to the image as {@link String}
      *                  <p>(e.g. {@code "C:\folder\image.png"}, {@code "folder/image.png"}).</p>
      * @throws fri.shapesge.engine.ShapesGEException if the file doesn't exist on that path
      */
     @SuppressWarnings("unused")
-    public Image(String imagePath) {
-        this(new DataObrazku(imagePath));
+    public Obrazok(String cestaKObrazku) {
+        this(new DataObrazku(cestaKObrazku));
     }
 
     /**
@@ -93,18 +93,18 @@ public class Image {
      * <li>Position X: 0 pixels from the left border of the canvas</li>
      * <li>Position Y: 20 pixels from the top border of the canvas</li>
      * </p>
-     * @param imageData the {@link DataObrazku} for this image.
+     * @param dataObrazku the {@link DataObrazku} for this image.
      *                  <p>Use this method if you created {@link DataObrazku} manually.</p>
      */
     @SuppressWarnings("unused")
-    public Image(DataObrazku imageData) {
-        this(imageData, 100, 100);
+    public Obrazok(DataObrazku dataObrazku) {
+        this(dataObrazku, 100, 100);
     }
 
     /**
      * Create a new image on the given position.
      *
-     * @param imagePath the <b>absolute or relative file path</b> to the image as {@link String}
+     * @param cestaKObrazku the <b>absolute or relative file path</b> to the image as {@link String}
      *                  <p>(e.g. {@code "C:\folder\image.png"}, {@code "folder/image.png"}).</p>
      * @param x x-coordinate of the image
      *          (distance from left border of the canvas)
@@ -113,149 +113,148 @@ public class Image {
      * @throws fri.shapesge.engine.ShapesGEException if the file doesn't exist on that path
      */
     @SuppressWarnings("unused")
-    public Image(String imagePath, int x, int y) {
-        this(new DataObrazku(imagePath), x, y);
+    public Obrazok(String cestaKObrazku, int x, int y) {
+        this(new DataObrazku(cestaKObrazku), x, y);
     }
 
     /**
      * Create a new image on the given position.
      *
-     * @param imageData the {@link DataObrazku} for this image.
+     * @param dataObrazku the {@link DataObrazku} for this image.
      *                  <p>Use this method if you created {@link DataObrazku} manually.</p>
      * @param x x-coordinate of the image
      *          (distance from left border of the canvas)
      * @param y y-coordinate of the image
      *          (distance from top border of the canvas)
      */
-    public Image(DataObrazku imageData, int x, int y) {
-        this.drawable = new ImageDrawable(x, y, 0, imageData.getImage());
+    public Obrazok(DataObrazku dataObrazku, int x, int y) {
+        this.drawable = new ImageDrawable(x, y, 0, dataObrazku.getImage());
     }
 
     /**
-     * Make this image visible. If it was already visible, do nothing.
-     * @implNote If you have multiple shapes on top of each other (overlapping),
-     * the shapes will be displayed in the order you send this message in.
+     * Zobraz tvar na plátne. Ak už bol viditeľný, nič sa nestane.
+     * @implNote Ak sa prekrýva viacero tvarov na sebe,
+     * tvary budú zobrazované v takom poradí, v akom sú poslané správy.
      * <p>
-     *     For example, if you need to place a {@link Circle} on top of a {@link Stvorec}, do this:
+     *     Napríklad, ak chceš {@link Kruh} viditeľný na štvorci ({@link Stvorec}), správy pošli v tomto poradí:
      *     <blockquote><pre>
-     *         yourSquare.makeVisible();
-     *         yourCircle.makeVisible();
+     *         tvojStvorec.zobraz();
+     *         tvojKruh.zobraz();
      *     </pre></blockquote>
-     *     If you swap these two lines, <b>the {@link Circle} will be hidden behind the {@link Stvorec} .</b>
+     *     Ak tieto správy pošleš v opačnom poradí, {@link Kruh} sa ti skryje pod {@link Stvorec}.</b>
      * </p>
      */
     @SuppressWarnings("unused")
-    public void makeVisible() {
+    public void zobraz() {
         this.drawable.makeVisible();
     }
 
     /**
-     * Make this image invisible.
-     * If it was already invisible, do nothing.
+     * Skry tvar z plátna. Ak už skrytý bol, nič sa nestane.
      */
     @SuppressWarnings("unused")
-    public void makeInvisible() {
+    public void skry() {
         this.drawable.makeInvisible();
     }
 
     /**
-     * Move the image a few pixels to the right.
-     * This method always moves the shape by 20 pixels.
+     * Posuň tvar o niekoľko pixelov vpravo.
+     * Táto metóda vždy posúva tvar o 20 pixelov.
      */
     @SuppressWarnings("unused")
-    public void moveRight() {
+    public void posunVpravo() {
         this.drawable.moveBy(20, 0);
     }
 
     /**
-     * Move the image a few pixels to the left.
-     * This method always moves the shape by 20 pixels.
+     * Posuň tvar o niekoľko pixelov vľavo.
+     * Táto metóda vždy posúva tvar o 20 pixelov.
      */
     @SuppressWarnings("unused")
-    public void moveLeft() {
+    public void posunVlavo() {
         this.drawable.moveBy(-20, 0);
     }
 
     /**
-     * Move the image a few pixels up.
-     * This method always moves the shape by 20 pixels.
+     * Posuň tvar o niekoľko pixelov hore.
+     * Táto metóda vždy posúva tvar o 20 pixelov.
      */
     @SuppressWarnings("unused")
-    public void moveUp() {
+    public void posunHore() {
         this.drawable.moveBy(0, -20);
     }
 
     /**
-     * Move the image a few pixels down.
-     * This method always moves the shape by 20 pixels.
+     * Posuň tvar o niekoľko pixelov dolu.
+     * Táto metóda vždy posúva tvar o 20 pixelov.
      */
     @SuppressWarnings("unused")
-    public void moveDown() {
+    public void posunDole() {
         this.drawable.moveBy(0, 20);
     }
 
     /**
-     * Move the shape horizontally by a given amount of pixels.
-     * @param distance how many <b>pixels</b> to move the object.
-     * Positive numbers ({@code distance > 0}) move the shape to the right.
-     * Negative numbers ({@code distance < 0}) move the shape to the left.
-     * Zero ({@code distance == 0} does not move the shape at all.
+     * Posuň tvar o daný počet pixelov vodorovne.
+     * @param vzdialenost o koľko <b>pixelov</b> sa má tvar posunúť.
+     * Kladné čísla ({@code vzdialenost > 0}) posunú tvar doprava.
+     * Záporné čísla ({@code vzdialenost < 0}) posunú tvar doľava.
+     * Nula ({@code vzdialenost == 0} tvar nikam neposunie.
      */
     @SuppressWarnings("unused")
-    public void moveHorizontal(int distance) {
-        this.drawable.moveBy(distance, 0);
+    public void posunVodorovne(int vzdialenost) {
+        this.drawable.moveBy(vzdialenost, 0);
     }
 
     /**
-     * Move the shape vertically by a given amount of pixels.
-     * @param distance how many <b>pixels</b> to move the object.
-     * Positive numbers ({@code distance > 0}) move the shape down.
-     * Negative numbers ({@code distance < 0}) move the shape up.
-     * Zero ({@code distance == 0} does not move the shape at all.
+     * Posuň tvar o daný počet pixelov zvisle.
+     * @param vzdialenost o koľko <b>pixelov</b> sa má tvar posunúť.
+     * Kladné čísla ({@code vzdialenost > 0}) posunú tvar doprava.
+     * Záporné čísla ({@code vzdialenost < 0}) posunú tvar doľava.
+     * Nula ({@code vzdialenost == 0} tvar nikam neposunie.
      */
     @SuppressWarnings("unused")
-    public void moveVertical(int distance) {
-        this.drawable.moveBy(0, distance);
+    public void posunZvisle(int vzdialenost) {
+        this.drawable.moveBy(0, vzdialenost);
     }
 
     /**
      * Change the drawn image.
      * @param imagePath the <b>absolute or relative file path</b> to the image as {@link String}
      *                  <p>(e.g. {@code "C:\folder\image.png"}, {@code "folder/image.png"}).</p>
-     *                  <p>See the {@link Image} class description for more information.</p>
+     *                  <p>See the {@link Obrazok} class description for more information.</p>
      * @throws fri.shapesge.engine.ShapesGEException if the file doesn't exist on that path
      * @implNote This method will draw the new Image in its original size and mirroring.
-     *           <p>If you need to preserve the size and mirroring across the changes, use {@link Image#changeImageAndPreserveParameters(String)}.</p>
+     *           <p>If you need to preserve the size and mirroring across the changes, use {@link Obrazok#zmenObrazokAZachovajParametre(String)}.</p>
      */
     @SuppressWarnings("unused")
-    public void changeImage(String imagePath) {
-        this.changeImage(new DataObrazku(imagePath));
+    public void zmenObrazok(String imagePath) {
+        this.zmenObrazok(new DataObrazku(imagePath));
     }
 
     /**
      * Change the drawn image.
-     * @param imagePath the <b>absolute or relative file path</b> to the image as {@link String}
+     * @param cestaKObrazku the <b>absolute or relative file path</b> to the image as {@link String}
      *                  <p>(e.g. {@code "C:\folder\image.png"}, {@code "folder/image.png"}).</p>
-     *                  <p>See the {@link Image} class description for more information.</p>
+     *                  <p>See the {@link Obrazok} class description for more information.</p>
      * @throws fri.shapesge.engine.ShapesGEException if the file doesn't exist on that path
      * @implNote This method will draw the new Image in the same size and mirroring as the current one.
-     *           <p>If you need to always get the original, use {@link Image#changeImage(String)}.</p>
+     *           <p>If you need to always get the original, use {@link Obrazok#zmenObrazok(String)}.</p>
      */
-    public void changeImageAndPreserveParameters(String imagePath) {
-        this.changeImageAndPreserveParameters(new DataObrazku(imagePath));
+    public void zmenObrazokAZachovajParametre(String cestaKObrazku) {
+        this.zmenObrazokAZachovajParametre(new DataObrazku(cestaKObrazku));
     }
 
     /**
      * Change the drawn image.
-     * @param imageData the {@link DataObrazku} for this image.
+     * @param dataObrazku the {@link DataObrazku} for this image.
      *                  <p>Use this method if you created {@link DataObrazku} manually.</p>
      */
     @SuppressWarnings("unused")
-    public void changeImage(DataObrazku imageData) {
-        this.drawable.changeImage(imageData.getImage(), false);
+    public void zmenObrazok(DataObrazku dataObrazku) {
+        this.drawable.changeImage(dataObrazku.getImage(), false);
     }
 
-    public void changeImageAndPreserveParameters(DataObrazku imageData) {
+    public void zmenObrazokAZachovajParametre(DataObrazku imageData) {
         this.drawable.changeImage(imageData.getImage(),true);
     }
 
@@ -272,101 +271,100 @@ public class Image {
      * @implNote When rotating the Image, it'll be rotated around its center.
      */
     @SuppressWarnings("unused")
-    public void changeAngle(int angle) {
+    public void zmenUhol(int angle) {
         this.drawable.changeAngle(angle);
     }
 
     /**
-     * Change the position according to the parameters.
-     * <p>This will set the position of the top left corner of the shape.</p>
-     * @param x x-coordinate of the shape
-     *          (distance from left border of the game window)
-     * @param y y-coordinate of the shape
-     *          (distance from top border of the game window)
+     * Zmeň pozíciu podľa parametrov.
+     * @param x pozícia X ľavého horného rohu tvaru.
+     * 	 Pozícia X je vzdialenosť od ľavého okraja plátna.
+     * @param y pozícia Y ľavého horného rohu tvaru.
+     * 	 Pozícia X je vzdialenosť od horného okraja plátna.
      */
     @SuppressWarnings("unused")
-    public void changePosition(int x, int y) {
+    public void zmenPoziciu(int x, int y) {
         this.drawable.moveTo(x, y);
     }
 
     /**
-     * Resize the image.
-     * The image will still be anchored from the top left, and rotated around its center.
-     * @param newWidth the new width of the shape.
-     *                The width cannot be lower than 0 ({@code newWidth < 0}).
-     * @param newHeight the new height of the shape.
-     *                The height cannot be lower than 0 ({@code newHeight < 0}).
+     * Zmeň veľkosť tvaru.
+     * @param novaSirka nová šírka tvaru v <b>pixeloch</b>
+     *                Šírka nesmie byť menšia ako 0 ({@code novaSirka < 0}).
+     * @param novaVyska nová výška tvaru v <b>pixeloch</b>.
+     *                Výška nesmie byť menšia ako 0 ({@code novaVyska < 0}).
      */
-    public void changeSize(int newWidth, int newHeight) {
-        this.drawable.changeSize(newWidth, newHeight);
+    @SuppressWarnings("unused")
+    public void zmenVelkost(int novaSirka, int novaVyska) {
+        this.drawable.changeSize(novaSirka, novaVyska);
     }
 
     /**
      * Mirror the image horizontally.
-     * @param mirrored Use {@code true} to make the image mirrored. Use {@code false} to get the original orientation.
+     * @param obratene Use {@code true} to make the image obratene. Use {@code false} to get the original orientation.
      */
-    public void mirrorHorizontal(boolean mirrored) {
-        this.drawable.flipHorizontal(mirrored);
+    public void obratVodorovne(boolean obratene) {
+        this.drawable.flipHorizontal(obratene);
     }
 
     /**
      * Mirror the image horizontally.
      * This method will always mirror the image, regardless of its current orientation.
      */
-    public void mirrorHorizontal() {
+    public void obratVodorovne() {
         this.drawable.flipHorizontal();
     }
 
     /**
      * Mirror the image vertically.
-     * @param mirrored Use {@code true} to make the image mirrored. Use {@code false} to get the original orientation.
+     * @param obratene Use {@code true} to make the image obratene. Use {@code false} to get the original orientation.
      */
-    public void mirrorVertical(boolean mirrored) {
-        this.drawable.flipVertical(mirrored);
+    public void obratZvisle(boolean obratene) {
+        this.drawable.flipVertical(obratene);
     }
 
     /**
      * Mirror the image vertically.
      * This method will always mirror the image, regardless of its current orientation.
      */
-    public void mirrorVertical() {
+    public void obratZvisle() {
         this.drawable.flipVertical();
     }
 
     /**
-     * @return the x-coordinate of the shape's top left corner.
-     * <p>The x-coordinate is the distance (in pixels) from the <b>left border</b> of the game window.</p>
+     * @return pozíciu X ľavého horného rohu tvaru.
+     * <p>Pozícia X je vzdialenosť (v pixeloch) od ľavého okraja plátna.</p>
      */
-    public int getPositionX() {
+    public int getPoziciaX() {
         return this.drawable.getXPosition();
     }
 
     /**
-     * @return the y-coordinate of the shape's top left corner.
-     * <p>The y-coordinate is the distance (in pixels) from the <b>top border</b> of the game window.</p>
+     * @return pozíciu Y ľavého horného rohu tvaru.
+     *      * <p>Pozícia Y je vzdialenosť (v pixeloch) od horného okraja plátna.</p>
      */
-    public int getPositionY() {
+    public int getPoziciaY() {
         return this.drawable.getYPosition();
     }
 
     /**
-     * @return the width of the shape in <b>pixels</b>.
+     * @return šírka tvaru v <b>pixeloch</b>.
      */
-    public int getWidth() {
+    public int getSirka() {
         return this.drawable.getWidth();
     }
 
     /**
-     * @return the height of the shape in <b>pixels</b>.
+     * @return výška tvaru v <b>pixeloch</b>.
      */
-    public int getHeight() {
+    public int getVyska() {
         return this.drawable.getHeight();
     }
 
     /**
-     * @return the angle of the shape in <b>degrees</b>.
+     * @return uhol obrázka v <b>stupňoch</b>.
      */
-    public int getAngle() {
+    public int getUhol() {
         return this.drawable.getAngle();
     }
 }

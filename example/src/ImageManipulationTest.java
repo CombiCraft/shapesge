@@ -1,4 +1,4 @@
-import fri.shapesge.Image;
+import fri.shapesge.Obrazok;
 import fri.shapesge.Manazer;
 
 public class ImageManipulationTest {
@@ -7,7 +7,7 @@ public class ImageManipulationTest {
     }
 
     int step = 0;
-    Image image = new Image("test.jpg");
+    Obrazok image = new Obrazok("test.jpg");
 
     public ImageManipulationTest() {
         this.image.makeVisible();
@@ -21,13 +21,13 @@ public class ImageManipulationTest {
                 this.image.changeSize(25, 100);
                 break;
             case 2:
-                this.image.changeImageAndPreserveParameters("arrow.png");
+                this.image.zmenObrazokAZachovajParametre("arrow.png");
                 break;
             case 3:
-                this.image.changeAngle(275);
-                this.image.mirrorHorizontal(true);
+                this.image.zmenUhol(275);
+                this.image.obratVodorovne(true);
                 break;
-            case 4: this.image.changeImage("test.jpg");
+            case 4: this.image.zmenObrazok("test.jpg");
                 break;
             default:
                 System.exit(404);

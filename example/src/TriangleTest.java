@@ -10,6 +10,6 @@ public class TriangleTest {
 //        new Rectangle().makeVisible();
 //        new Circle().makeVisible();
 //        new Ellipse().makeVisible();
-        new Image("test.jpg").changeSize(-30, 45);
+        new Obrazok("test.jpg").changeSize(-30, 45);
     }
 }
