@@ -1,7 +1,7 @@
 import fri.shapesge.Circle;
 import fri.shapesge.FontStyle;
 import fri.shapesge.Image;
-import fri.shapesge.Manager;
+import fri.shapesge.Manazer;
 import fri.shapesge.Stvorec;
 import fri.shapesge.TextBlock;
 import fri.shapesge.Trojuholnik;
@@ -45,9 +45,9 @@ public class Main {
         randomCircle.changeColor("red");
         randomCircle.makeVisible();
 
-        Manager manager = new Manager();
-        manager.manageObject(triangle);
-        manager.manageObject(new ManagedTest(circle, randomCircle));
+        Manazer manager = new Manazer();
+        manager.spravujObjekt(triangle);
+        manager.spravujObjekt(new ManagedTest(circle, randomCircle));
     }
 
     @SuppressWarnings("unused")

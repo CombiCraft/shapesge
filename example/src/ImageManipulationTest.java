@@ -1,5 +1,5 @@
 import fri.shapesge.Image;
-import fri.shapesge.Manager;
+import fri.shapesge.Manazer;
 
 public class ImageManipulationTest {
     public static void main(String[] args) {
@@ -11,7 +11,7 @@ public class ImageManipulationTest {
 
     public ImageManipulationTest() {
         this.image.makeVisible();
-        new Manager().manageObject(this);
+        new Manazer().spravujObjekt(this);
     }
 
     public void step() {

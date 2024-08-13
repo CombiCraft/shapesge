@@ -1,5 +1,5 @@
 import fri.shapesge.Image;
-import fri.shapesge.Manager;
+import fri.shapesge.Manazer;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -12,7 +12,7 @@ public class StressTest {
     ArrayList<Image> images = new ArrayList<>();
 
     public StressTest() {
-        new Manager().manageObject(this);
+        new Manazer().spravujObjekt(this);
     }
 
     public void tick() {
