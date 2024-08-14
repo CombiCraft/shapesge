@@ -3,59 +3,55 @@ package fri.shapesge;
 import fri.shapesge.drawables.ImageDrawable;
 
 /**
- * Image is an image drawn on the game's window (the Canvas).
- * It can load and display PNG and JPEG, including transparency (alpha channel).
- * To load the image, use the <b>absolute or relative file path</b> of your image as {@link String}.
+ * Obrázok, ktorý sa zobrazí v hernom okne (na plátne).
+ * Táto trieda dokáže spracovať obrázky formátu PNG alebo JPEG, vrátane priehľadnosti (alpha channel).
+ * Obrázok načítaš použitím jeho <b>absolútnej alebo relatívnej cesty</b> ako parameter vo formáte {@link String}.
  * <br><br>
- * <h3>How to use the absolute file path</h3>
- * <p>This is the full system path, starting at the system root.</p>
+ * <h3>Použitie absolútnej cesty k súboru</h3>
  * <p>
- *     <b>On Windows:</b>
+ *     <b>Windows:</b>
  *     <ol>
- *         <p>The absolute file path starts from your drive letter (e.g. {@code C:\})</p>
- *         <li>Find the image in <b>File Explorer</b> (📁)</li>
- *         <li>Right click the image</li>
- *         <li>Select <b>Copy as path</b></li>
+ *         <p>Absolútna cesta začína písmenkom disku (napr. {@code C:\})</p>
+ *         <li>Nájdi svoj obrázok v programe <b>Prieskumník (File Explorer</b> 📁)</li>
+ *         <li>Klikni na obrázok pravým tlačidlom myši</li>
+ *         <li>Zvoľ možnosť <b>Skopírovať cestu (Copy as path)</b></li>
  *     </ol>
- *     <b>On MacOS:</b>
+ *     <b>MacOS:</b>
  *     <ol>
- *         <p>The absolute file path starts from the <i>root directory</i>. ({@code /})</p>
- *         <li>Find the image in <b>Finder</b></li>
- *         <li>Right click the image</li>
- *         <li>Hold down the <b>OPTION</b> key</li>
- *         <li>Select <b>Copy as Filepath</b></li>
+ *         <p>Absolútna cesta začína <i>priečinkom root</i>. ({@code /})</p>
+ *         <li>Nájdi svoj obrázok v programe <b>Finder</b></li>
+ *         <li>Klikni na obrázok pravým tlačidlom myši</li>
+ *         <li>Slač a drž klávesu <b>OPTION</b></li>
+ *         <li>Zvoľ možnosť <b>Skopírovať cestu (Copy as Filepath)</b></li>
  *     </ol>
- *     <b>On Linux:</b>
+ *     <b>Linux:</b>
  *     <ul>
- *         <p>The absolute file path starts from the <i>root directory</i>. ({@code /})
- *         Please consult <b>your distro Help page</b> for specific steps.</p>
+ *         <p>Absolútna cesta začína <i>priečinkom root</i>. ({@code /})</p>
+ *         <p>Presnejšie inštrukcie nájdeš v používateľskom návode konkrétnej distribúcie.</p>
  *     </ul>
  * </p>
- * <b><u>IMPORTANT NOTE:</u></b> Do not use Absolute file path for serious projects (including semester works).
- * If you have to open the project on a different computer, it won't be able to find any files!
- * Instead, please use the Relative File Path when possible.
+ * <b><u>DÔLEŽITÉ:</u></b> Absolútnu cestu nepoužívaj v serióznych projektoch (vrátane semestrálnych prác).
+ * Ak budeš projekt musieť otvoriť na inom počítači, obrázky sa nenačítajú!!!
+ * Preto radšej použi relatívnu cestu.
  * <br><br>
- * <h3>How to use the relative file path</h3>
- * <p>This is the file path relative to your project's folder.</p>
+ * <h3>Použitie relatívnej csty k súboru</h3>
+ * <p>Relatívna cesta začína priečinkom, v ktorom sa nachádza tvoj projekt.</p>
  * <p>
- *     <b>In BlueJ:</b>
+ *     <b>BlueJ:</b>
  *     <ol>
- *         <li>Copy and paste the image file to your project's folder</li>
- *         <li>Use just the file name, no path needed (e.g. {@code "image.png"})
- *         (the path is <b>relative</b> to the project folder)</li>
- *         <p>You can also put these files into folders in your project. If you do that, use {@code "folder/image.png"}.</p>
+ *         <li>Obrázok skopíruj do priečinka s tvojím projektom</li>
+ *         <li>Pri tvorbe obrázka napíš už iba jeho názov</li> (napr. {@code "image.png"})
+ *         <p>Tvoje obrázky môžeš vkladať aj do podpriečinkov v tvojom projekte, v takom prípade použi {@code "folder/image.png"}.</p>
  *     </ol>
- *     <b>In IntelliJ IDEA:</b>
+ *     <b>IntelliJ IDEA:</b>
  *     <ol>
- *         <li>Right click on your <b>Project pane</b> (on the left)</li>
- *         <li>Select <b>New -> Directory</b>, name it and press ENTER</li>
- *         <li>Right click the new folder</li>
- *         <li>Select <b>Mark Directory as -> Resources root</b></li>
- *         <li>Copy and paste the image file to this folder</li>
- *         <li>Use just the file name, no path needed (e.g. {@code "image.png"})
- *         (the path is <b>relative</b> to the Resources folder)</li>
- *         <p>You can also put these files into folders in your project. If you do that, use {@code "folder/image.png"}.</p>
- *         <p>You can also use Java's implementation of Resources to load and process your Images.</p>
+ *         <li>Klikni pravým na <b>Project pane</b> (vľavo, kde sú všetky triedy)</li>
+ *         <li>Vyber možnosť <b>New -> Directory</b>, pomenuj priečinok a stlač ENTER</li>
+ *         <li>Klikni pravým na tento priečinok</li>
+ *         <li>Vyber možnosť <b>Mark Directory as -> Resources root</b></li>
+ *         <li>Tvoj obrázok skopíruj a vlož do tohto priečinka.</li>
+ *         <li>Pri tvorbe obrázka napíš už iba jeho názov</li> (napr. {@code "image.png"})
+ *  *         <p>Tvoje obrázky môžeš vkladať aj do podpriečinkov v tvojom projekte, v takom prípade použi {@code "folder/image.png"}.</p>
  *     </ol>
  * </p>
  *
@@ -69,16 +65,17 @@ public class Obrazok {
     private final ImageDrawable drawable;
 
     /**
-     * Create a new image on the default position.
+     * Vytvor nový obrázok na predvolenej pozícii.
      * <p>
-     * Default position:
+     * Predvolená pozícia:
      * <ul>
-     * <li>Position X: 0 pixels from the left border of the canvas</li>
-     * <li>Position Y: 20 pixels from the top border of the canvas</li>
+     * <li>Pozícia X: 100 pixelov od ľavého okraja plátna</li>
+     * <li>Pozícia Y: 100 pixelov od horného okraja plátna</li>
      * </p>
-     * @param cestaKObrazku the <b>absolute or relative file path</b> to the image as {@link String}
-     *                  <p>(e.g. {@code "C:\folder\image.png"}, {@code "folder/image.png"}).</p>
-     * @throws fri.shapesge.engine.ShapesGEException if the file doesn't exist on that path
+     * @param cestaKObrazku <b>absolútna alebo relatívna cesta</b> k obrázku vo formáte {@link String}.
+     *                  <p>(napr. {@code "C:\folder\image.png"}, {@code "folder/image.png"}).</p>
+     *                  <p>Viac informácii nájdeš v popise triedy {@link Obrazok} .</p>
+     * @throws fri.shapesge.engine.ShapesGEException ak sa na ceste nenachádza žiadny obrázok
      */
     @SuppressWarnings("unused")
     public Obrazok(String cestaKObrazku) {
@@ -86,15 +83,15 @@ public class Obrazok {
     }
 
     /**
-     * Create a new image on the default position.
+     * Vytvor nový obrázok na predvolenej pozícii.
      * <p>
-     * Default position:
+     * Predvolená pozícia:
      * <ul>
-     * <li>Position X: 0 pixels from the left border of the canvas</li>
-     * <li>Position Y: 20 pixels from the top border of the canvas</li>
+     * <li>Pozícia X: 100 pixelov od ľavého okraja plátna</li>
+     * <li>Pozícia Y: 100 pixelov od horného okraja plátna</li>
      * </p>
-     * @param dataObrazku the {@link DataObrazku} for this image.
-     *                  <p>Use this method if you created {@link DataObrazku} manually.</p>
+     * @param dataObrazku objekt {@link DataObrazku} ktorý obsahuje nový obrázok.
+     *                  <p>Túto metódu použi ak vytváraš {@link DataObrazku} samostatne.</p>
      */
     @SuppressWarnings("unused")
     public Obrazok(DataObrazku dataObrazku) {
@@ -102,15 +99,15 @@ public class Obrazok {
     }
 
     /**
-     * Create a new image on the given position.
-     *
-     * @param cestaKObrazku the <b>absolute or relative file path</b> to the image as {@link String}
-     *                  <p>(e.g. {@code "C:\folder\image.png"}, {@code "folder/image.png"}).</p>
-     * @param x x-coordinate of the image
-     *          (distance from left border of the canvas)
-     * @param y y-coordinate of the image
-     *          (distance from top border of the canvas)
-     * @throws fri.shapesge.engine.ShapesGEException if the file doesn't exist on that path
+     * Vytvor nový obrázok na danej pozícii.
+     * @param cestaKObrazku <b>absolútna alebo relatívna cesta</b> k obrázku vo formáte {@link String}.
+     *                  <p>(napr. {@code "C:\folder\image.png"}, {@code "folder/image.png"}).</p>
+     *                  <p>Viac informácii nájdeš v popise triedy {@link Obrazok} .</p>
+     * @param x pozícia X ľavého horného rohu tvaru.
+     * 	 Pozícia X je vzdialenosť od ľavého okraja plátna.
+     * @param y pozícia Y ľavého horného rohu tvaru.
+     * 	 Pozícia Y je vzdialenosť od horného okraja plátna.
+     * @throws fri.shapesge.engine.ShapesGEException ak sa na ceste nenachádza žiadny obrázok
      */
     @SuppressWarnings("unused")
     public Obrazok(String cestaKObrazku, int x, int y) {
@@ -118,14 +115,13 @@ public class Obrazok {
     }
 
     /**
-     * Create a new image on the given position.
-     *
-     * @param dataObrazku the {@link DataObrazku} for this image.
-     *                  <p>Use this method if you created {@link DataObrazku} manually.</p>
-     * @param x x-coordinate of the image
-     *          (distance from left border of the canvas)
-     * @param y y-coordinate of the image
-     *          (distance from top border of the canvas)
+     * Vytvor nový obrázok na danej pozícii.
+     * @param dataObrazku objekt {@link DataObrazku} ktorý obsahuje nový obrázok.
+     *                  <p>Túto metódu použi ak vytváraš {@link DataObrazku} samostatne.</p>
+     @param x pozícia X ľavého horného rohu tvaru.
+      * 	 Pozícia X je vzdialenosť od ľavého okraja plátna.
+      * @param y pozícia Y ľavého horného rohu tvaru.
+     * 	 Pozícia Y je vzdialenosť od horného okraja plátna.
      */
     public Obrazok(DataObrazku dataObrazku, int x, int y) {
         this.drawable = new ImageDrawable(x, y, 0, dataObrazku.getImage());
@@ -218,44 +214,55 @@ public class Obrazok {
     }
 
     /**
-     * Change the drawn image.
-     * @param imagePath the <b>absolute or relative file path</b> to the image as {@link String}
-     *                  <p>(e.g. {@code "C:\folder\image.png"}, {@code "folder/image.png"}).</p>
-     *                  <p>See the {@link Obrazok} class description for more information.</p>
-     * @throws fri.shapesge.engine.ShapesGEException if the file doesn't exist on that path
-     * @implNote This method will draw the new Image in its original size and mirroring.
-     *           <p>If you need to preserve the size and mirroring across the changes, use {@link Obrazok#zmenObrazokAZachovajParametre(String)}.</p>
+     * Zmeň obrázok za iný.
+     * @param cestaKObrazku <b>absolútna alebo relatívna cesta</b> k obrázku vo formáte {@link String}.
+     *                  <p>(napr. {@code "C:\folder\image.png"}, {@code "folder/image.png"}).</p>
+     *                  <p>Viac informácii nájdeš v popise triedy {@link Obrazok} .</p>
+     * @throws fri.shapesge.engine.ShapesGEException ak sa na ceste nenachádza žiadny obrázok
+     * @implNote Táto metóda vykreslí nový obrázok v jeho originálnej veľkosti a orientácii.
+     *           <p>Ak potrebuješ zmeniť obrázok a zachovať veľkosť aj orientáciu, použí {@link Obrazok#zmenObrazokAZachovajParametre(String)}.</p>
      */
     @SuppressWarnings("unused")
-    public void zmenObrazok(String imagePath) {
-        this.zmenObrazok(new DataObrazku(imagePath));
+    public void zmenObrazok(String cestaKObrazku) {
+        this.zmenObrazok(new DataObrazku(cestaKObrazku));
     }
 
     /**
-     * Change the drawn image.
-     * @param cestaKObrazku the <b>absolute or relative file path</b> to the image as {@link String}
-     *                  <p>(e.g. {@code "C:\folder\image.png"}, {@code "folder/image.png"}).</p>
-     *                  <p>See the {@link Obrazok} class description for more information.</p>
-     * @throws fri.shapesge.engine.ShapesGEException if the file doesn't exist on that path
-     * @implNote This method will draw the new Image in the same size and mirroring as the current one.
-     *           <p>If you need to always get the original, use {@link Obrazok#zmenObrazok(String)}.</p>
+     * Zmeň obrázok za iný a zachovaj veľkosť, otočenie a orientáciu pôvodného.
+     * @param cestaKObrazku <b>absolútna alebo relatívna cesta</b> k obrázku vo formáte {@link String}.
+     *                  <p>(napr. {@code "C:\folder\image.png"}, {@code "folder/image.png"}).</p>
+     *                  <p>Viac informácii nájdeš v popise triedy {@link Obrazok} .</p>
+     * @throws fri.shapesge.engine.ShapesGEException ak sa na ceste nenachádza žiadny obrázok
+     * @implNote Táto metóda vykreslí nový obrázok v rovnakej veľkosti a orientácii ako ten pôvodný.
+     *           <p>Ak potrebuješ vykresliť originál nového obrázku (tzn. v jeho originálnej veľkosti
+     *           a orientácii), použí {@link Obrazok#zmenObrazok(String)}.</p>
      */
     public void zmenObrazokAZachovajParametre(String cestaKObrazku) {
         this.zmenObrazokAZachovajParametre(new DataObrazku(cestaKObrazku));
     }
 
     /**
-     * Change the drawn image.
-     * @param dataObrazku the {@link DataObrazku} for this image.
-     *                  <p>Use this method if you created {@link DataObrazku} manually.</p>
+     * Zmeň obrázok za iný.
+     * @param dataObrazku objekt {@link DataObrazku} ktorý obsahuje nový obrázok.
+     *                  <p>Túto metódu použi ak vytváraš {@link DataObrazku} samostatne.</p>
+     * @implNote Táto metóda vykreslí nový obrázok v jeho originálnej veľkosti a orientácii.
+     *           <p>Ak potrebuješ zmeniť obrázok a zachovať veľkosť aj orientáciu, použí {@link Obrazok#zmenObrazokAZachovajParametre(String)}.</p>
      */
     @SuppressWarnings("unused")
     public void zmenObrazok(DataObrazku dataObrazku) {
         this.drawable.changeImage(dataObrazku.getImage(), false);
     }
 
-    public void zmenObrazokAZachovajParametre(DataObrazku imageData) {
-        this.drawable.changeImage(imageData.getImage(),true);
+    /**
+     * Zmeň obrázok za iný a zachovaj veľkosť, otočenie a orientáciu pôvodného.
+     * @param dataObrazku objekt {@link DataObrazku} ktorý obsahuje nový obrázok.
+     *                  <p>Túto metódu použi ak vytváraš {@link DataObrazku} samostatne.</p>
+     * @implNote Táto metóda vykreslí nový obrázok v rovnakej veľkosti a orientácii ako ten pôvodný.
+     *           <p>Ak potrebuješ vykresliť originál nového obrázku (tzn. v jeho originálnej veľkosti
+     *           a orientácii), použí {@link Obrazok#zmenObrazok(String)}.</p>
+     */
+    public void zmenObrazokAZachovajParametre(DataObrazku dataObrazku) {
+        this.drawable.changeImage(dataObrazku.getImage(),true);
     }
 
     /**
@@ -280,7 +287,7 @@ public class Obrazok {
      * @param x pozícia X ľavého horného rohu tvaru.
      * 	 Pozícia X je vzdialenosť od ľavého okraja plátna.
      * @param y pozícia Y ľavého horného rohu tvaru.
-     * 	 Pozícia X je vzdialenosť od horného okraja plátna.
+     * 	 Pozícia Y je vzdialenosť od horného okraja plátna.
      */
     @SuppressWarnings("unused")
     public void zmenPoziciu(int x, int y) {
@@ -300,32 +307,32 @@ public class Obrazok {
     }
 
     /**
-     * Mirror the image horizontally.
-     * @param obratene Use {@code true} to make the image obratene. Use {@code false} to get the original orientation.
+     * Obráť obrázok vodorovne.
+     * @param obratene Zadaj {@code true} aby bol obrázok obrátený. Zadaj {@code false} aby bol obrázok v pôvodnej orientácii.
      */
     public void obratVodorovne(boolean obratene) {
         this.drawable.flipHorizontal(obratene);
     }
 
     /**
-     * Mirror the image horizontally.
-     * This method will always mirror the image, regardless of its current orientation.
+     * Obráť obrázok vodorovne.
+     * Táto metóda obrázok obráti vždy. Ak už bol obrátený, vráti ho do pôvodnej orientácie.
      */
     public void obratVodorovne() {
         this.drawable.flipHorizontal();
     }
 
     /**
-     * Mirror the image vertically.
-     * @param obratene Use {@code true} to make the image obratene. Use {@code false} to get the original orientation.
+     * Obráť obrázok zvisle.
+     * @param obratene Zadaj {@code true} aby bol obrázok obrátený. Zadaj {@code false} aby bol obrázok v pôvodnej orientácii.
      */
     public void obratZvisle(boolean obratene) {
         this.drawable.flipVertical(obratene);
     }
 
     /**
-     * Mirror the image vertically.
-     * This method will always mirror the image, regardless of its current orientation.
+     * Obráť obrázok zvisle.
+     * Táto metóda obrázok obráti vždy. Ak už bol obrátený, vráti ho do pôvodnej orientácie.
      */
     public void obratZvisle() {
         this.drawable.flipVertical();
