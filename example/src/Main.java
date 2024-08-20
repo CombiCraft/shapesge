@@ -1,22 +1,22 @@
 import fri.shapesge.Circle;
 import fri.shapesge.FontStyle;
-import fri.shapesge.Obrazok;
-import fri.shapesge.Manazer;
-import fri.shapesge.Stvorec;
+import fri.shapesge.Image;
+import fri.shapesge.Manager;
+import fri.shapesge.Square;
 import fri.shapesge.TextBlock;
-import fri.shapesge.Trojuholnik;
+import fri.shapesge.Triangle;
 
 import java.util.Random;
 
 public class Main {
     public static void main(String[] args) {
-        Stvorec square = new Stvorec();
+        var square = new Square();
         square.makeVisible();
 
         Circle circle = new Circle();
         circle.makeVisible();
 
-        Trojuholnik triangle = new Trojuholnik();
+        var triangle = new Triangle();
         triangle.makeVisible();
 
         TextBlock t = new TextBlock("Boo from\nSBGE");
@@ -45,23 +45,23 @@ public class Main {
         randomCircle.changeColor("red");
         randomCircle.makeVisible();
 
-        Manazer manager = new Manazer();
-        manager.spravujObjekt(triangle);
-        manager.spravujObjekt(new ManagedTest(circle, randomCircle));
+        var manager = new Manager();
+        manager.manageObject(triangle);
+        manager.manageObject(new ManagedTest(circle, randomCircle));
     }
 
     @SuppressWarnings("unused")
     public static class ManagedTest {
         private final Circle circle;
         private final Circle randomCircle;
-        private final Obrazok image;
-        private final Obrazok reference;
+        private final Image image;
+        private final Image reference;
 
         public ManagedTest(Circle circle, Circle randomCircle) {
             this.circle = circle;
             this.randomCircle = randomCircle;
-            this.reference = new Obrazok("test.jpg");
-            this.image = new Obrazok("test.jpg");
+            this.reference = new Image("test.jpg");
+            this.image = new Image("test.jpg");
             this.reference.makeVisible();
             this.image.makeVisible();
         }
@@ -89,8 +89,8 @@ public class Main {
             this.randomCircle.changePosition(r.nextInt(1000), r.nextInt(1000));
             this.image.changeSize(r.nextInt(200) + 84, r.nextInt(100) + 78);
 //            this.image.mirrorHorizontal();
-            this.image.zmenUhol(this.image.getAngle() + 1);
-            this.reference.zmenUhol(this.reference.getAngle() + 1);
+            this.image.changeAngle(this.image.getAngle() + 1);
+            this.reference.changeAngle(this.reference.getAngle() + 1);
             System.out.println(this.image.getPositionX() + " " + this.image.getPositionY());
         }
     }

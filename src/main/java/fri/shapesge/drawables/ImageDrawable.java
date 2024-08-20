@@ -87,8 +87,8 @@ public class ImageDrawable extends TranslatableDrawable {
     public void changeSize(int newWidth, int newHeight) {
         if (newWidth < 0 || newHeight < 0) {
             throw new ShapesGEException(
-                    "Image size (width, height or both) cannot be 0 or negative!\n" +
-                    "To mirror the Image, use the mirrorHorizontal() and mirrorVertical() methods."
+                    "Image size cannot be 0 or lower\n" +
+                    "To mirror the Image, use the mirrorHorizontal() and mirrorVertical() methods.\n"
             );
         }
         this.updateImage(newWidth, newHeight, this.mirroredHorizontal, this.mirroredVertical);

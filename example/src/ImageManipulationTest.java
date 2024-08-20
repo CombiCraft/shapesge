@@ -7,11 +7,11 @@ public class ImageManipulationTest {
     }
 
     int step = 0;
-    Obrazok image = new Obrazok("test.jpg");
+    Image image = new Image("test.jpg");
 
     public ImageManipulationTest() {
         this.image.makeVisible();
-        new Manazer().spravujObjekt(this);
+        new Manager().manageObject(this);
     }
 
     public void step() {
@@ -21,13 +21,13 @@ public class ImageManipulationTest {
                 this.image.changeSize(25, 100);
                 break;
             case 2:
-                this.image.zmenObrazokAZachovajParametre("arrow.png");
+                this.image.changeImageAndPreserveParameters("arrow.png");
                 break;
             case 3:
-                this.image.zmenUhol(275);
-                this.image.obratVodorovne(true);
+                this.image.changeAngle(275);
+                this.image.mirrorHorizontal(true);
                 break;
-            case 4: this.image.zmenObrazok("test.jpg");
+            case 4: this.image.changeImage("test.jpg");
                 break;
             default:
                 System.exit(404);

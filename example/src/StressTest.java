@@ -1,5 +1,5 @@
-import fri.shapesge.Obrazok;
-import fri.shapesge.Manazer;
+import fri.shapesge.Image;
+import fri.shapesge.Manager;
 
 import java.util.ArrayList;
 import java.util.Random;
@@ -9,14 +9,14 @@ public class StressTest {
         new StressTest();
     }
 
-    ArrayList<Obrazok> images = new ArrayList<>();
+    ArrayList<Image> images = new ArrayList<>();
 
     public StressTest() {
-        new Manazer().spravujObjekt(this);
+        new Manager().manageObject(this);
     }
 
     public void tick() {
-        Obrazok e = new Obrazok("arrow.png");
+        var e = new Image("arrow.png");
         this.images.add(e);
         e.makeVisible();
         Random r = new Random();
@@ -24,9 +24,9 @@ public class StressTest {
 //        for (Image image : this.images) {
             image.changePosition(r.nextInt(1000), r.nextInt(1000));
             image.changeSize(r.nextInt(200) + 84, r.nextInt(100) + 78);
-            image.zmenUhol(r.nextInt(360));
-            image.obratZvisle();
-            image.obratZvisle();
+            image.changeAngle(r.nextInt(360));
+            image.mirrorVertical();
+            image.mirrorHorizontal();
 //        }
     }
 }
