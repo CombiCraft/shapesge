@@ -1,6 +1,6 @@
 <component name="ArtifactManager">
-  <artifact type="jar" name="shapesGE_testing_combi:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/shapesGE_testing</output-path>
+  <artifact type="jar" name="shapesGE_v3_alpha_20aug2024:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/shapesGE_v3_alpha_20aug2024_jar</output-path>
     <root id="archive" name="lib_ShapesGE_Additions.jar">
       <element id="module-output" name="lib_ShapesGE_Additions" />
     </root>
