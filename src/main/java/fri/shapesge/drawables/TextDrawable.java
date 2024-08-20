@@ -163,7 +163,7 @@ public class TextDrawable extends FilledDrawable {
 
     public int getHeight() {
         var fontMetrics = this.generateFontMetrics();
-        return ((fontMetrics.getHeight() + this.lineSpacing) * this.text.length) - this.lineSpacing;
+        return ((fontMetrics.getHeight() + this.lineSpacing) * this.wrap(this.text).length) - this.lineSpacing;
     }
 
     public void disableTextWrapping() {
