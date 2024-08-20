@@ -1,7 +1,8 @@
 package fri.shapesge;
 
 /**
- * Možné štýly písma.
+ * Toto je <b>enum</b>, ktorý obsahuje
+ * štýly písma pre {@link BlokTextu#zmenFont}.
  */
 @SuppressWarnings("unused")
 public enum StylFontu {

@@ -40,6 +40,10 @@ public class Manager {
      *     Use {@link Manager#manageObject} to enable object management.
      * </p>
      */
+    /**
+     * Create a new empty manager.
+     * Use {@link Manager#manageObject} to enable any functionality.
+     */
     public Manager() {
 
     }

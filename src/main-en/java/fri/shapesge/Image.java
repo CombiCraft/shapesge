@@ -249,12 +249,21 @@ public class Image {
      * Change the drawn image.
      * @param imageData the {@link ImageData} for this image.
      *                  <p>Use this method if you created {@link ImageData} manually.</p>
+     * @implNote This method will draw the new Image in its original size and mirroring.
+     *           <p>If you need to preserve the size and mirroring across the changes, use {@link Image#changeImageAndPreserveParameters(String)}.</p>
      */
     @SuppressWarnings("unused")
     public void changeImage(ImageData imageData) {
         this.drawable.changeImage(imageData.getImage(), false);
     }
 
+    /**
+     * Change the drawn image.
+     * @param imageData the {@link ImageData} for this image.
+     *                  <p>Use this method if you created {@link ImageData} manually.</p>
+     * @implNote This method will draw the new Image in the same size and mirroring as the current one.
+     *           <p>If you need to always get the original, use {@link Image#changeImage(String)}.</p>
+     */
     public void changeImageAndPreserveParameters(ImageData imageData) {
         this.drawable.changeImage(imageData.getImage(),true);
     }

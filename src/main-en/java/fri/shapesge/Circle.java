@@ -9,7 +9,7 @@ import java.awt.Color;
  *
  * @author original: Michael Kölling and David J. Barnes
  * @author engine: Ján Janech
- * @version 1.0  (9.11.2022)
+ * @version 1.1  (July 2024)
  */
 
 @SuppressWarnings("unused")
@@ -63,8 +63,8 @@ public class Circle {
      * <p>
      *     For example, if you need to place a {@link Circle} on top of a {@link Square}, do this:
      *     <blockquote><pre>
-     *         yourRectangle.makeVisible();
-     *         yourImage.makeVisible();
+     *         yourSquare.makeVisible();
+     *         yourCircle.makeVisible();
      *     </pre></blockquote>
      *     If you swap these two lines, <b>the {@link Circle} will be hidden behind the {@link Square} .</b>
      * </p>
