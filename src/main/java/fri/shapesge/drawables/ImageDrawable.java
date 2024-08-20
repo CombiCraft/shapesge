@@ -1,6 +1,7 @@
 package fri.shapesge.drawables;
 
 import fri.shapesge.engine.Game;
+import fri.shapesge.engine.ShapesGEException;
 
 import java.awt.Graphics2D;
 import java.awt.geom.Point2D;
@@ -20,21 +21,26 @@ public class ImageDrawable extends TranslatableDrawable {
     }
 
     public void changeImage(BufferedImage image, boolean preserveParameters) {
-        if (!preserveParameters) {
-            this.mirroredHorizontal = false;
-            this.mirroredVertical = false;
-        } else {
-            int sizeX = this.getHeight();
-            int sizeY = this.getWidth();
-        }
+
+        // Grabbing parameters of the old image
+        int sizeX = this.getWidth();
+        int sizeY = this.getHeight();
+        boolean flipHorizontal = this.mirroredHorizontal;
+        boolean flipVertical = this.mirroredVertical;
 
         this.image = image;
         this.original = this.image;
 
-        if (preserveParameters) {
-
+        if (!preserveParameters) {
+            // Reset the parameters...
+            sizeX = this.getWidth();
+            sizeY = this.getHeight();
+            flipHorizontal = false;
+            flipVertical = false;
+            this.changeAngle(0);
         }
 
+        this.updateImage(sizeX, sizeY, flipHorizontal, flipVertical);
         Game.getGame().somethingHasChanged();
     }
 
@@ -79,6 +85,12 @@ public class ImageDrawable extends TranslatableDrawable {
     }
 
     public void changeSize(int newWidth, int newHeight) {
+        if (newWidth < 0 || newHeight < 0) {
+            throw new ShapesGEException(
+                    "Image size (width, height or both) cannot be 0 or negative!\n" +
+                    "To mirror the Image, use the mirrorHorizontal() and mirrorVertical() methods."
+            );
+        }
         this.updateImage(newWidth, newHeight, this.mirroredHorizontal, this.mirroredVertical);
     }
 
@@ -111,7 +123,7 @@ public class ImageDrawable extends TranslatableDrawable {
          * answered Mar 27, 2021 at 21:30 by Larjak
          * https://stackoverflow.com/questions/12552144/resize-image-in-java-without-losing-transparency
          *
-         * StackOverflow:
+         * StackOverflow: "Flip image with Graphics2D"
          * asked Mar 4, 2012 at 21:30 by Fuze && edited Jun 26, 2018 at 2:58 by Neuron
          * answered Nov 11, 2013 at 17:44 by hsirkar && edited Feb 14, 2017 at 6:46 by samgak
          * https://stackoverflow.com/questions/9558981/flip-image-with-graphics2d

@@ -6,8 +6,8 @@ import fri.shapesge.drawables.ImageDrawable;
  * Image is an image drawn on the game's window (the Canvas).
  * It can load and display PNG and JPEG, including transparency (alpha channel).
  * To load the image, use the <b>absolute or relative file path</b> of your image as {@link String}.
- *
- * <h3>Absolute file path</h3>
+ * <br><br>
+ * <h3>How to use the absolute file path</h3>
  * <p>This is the full system path, starting at the system root.</p>
  * <p>
  *     <b>On Windows:</b>
@@ -33,14 +33,16 @@ import fri.shapesge.drawables.ImageDrawable;
  * </p>
  * <b><u>IMPORTANT NOTE:</u></b> Do not use Absolute file path for serious projects (including semester works).
  * If you have to open the project on a different computer, it won't be able to find any files!
- * Instead, please use the Relative File Path.
- * <h3>Relative file path</h3>
+ * Instead, please use the Relative File Path when possible.
+ * <br><br>
+ * <h3>How to use the relative file path</h3>
  * <p>This is the file path relative to your project's folder.</p>
  * <p>
  *     <b>In BlueJ:</b>
  *     <ol>
  *         <li>Copy and paste the image file to your project's folder</li>
- *         <li>Use just the file name, no path needed (e.g. {@code "image.png"}</li>
+ *         <li>Use just the file name, no path needed (e.g. {@code "image.png"})
+ *         (the path is <b>relative</b> to the project folder)</li>
  *         <p>You can also put these files into folders in your project. If you do that, use {@code "folder/image.png"}.</p>
  *     </ol>
  *     <b>In IntelliJ IDEA:</b>
@@ -50,7 +52,8 @@ import fri.shapesge.drawables.ImageDrawable;
  *         <li>Right click the new folder</li>
  *         <li>Select <b>Mark Directory as -> Resources root</b></li>
  *         <li>Copy and paste the image file to this folder</li>
- *         <li>Use just the file name, no path needed (e.g. {@code "image.png"}</li>
+ *         <li>Use just the file name, no path needed (e.g. {@code "image.png"})
+ *         (the path is <b>relative</b> to the Resources folder)</li>
  *         <p>You can also put these files into folders in your project. If you do that, use {@code "folder/image.png"}.</p>
  *         <p>You can also use Java's implementation of Resources to load and process your Images.</p>
  *     </ol>
@@ -133,13 +136,12 @@ public class Image {
      * @implNote If you have multiple shapes on top of each other (overlapping),
      * the shapes will be displayed in the order you send this message in.
      * <p>
-     *     For example, if you're creating a building that consists of a {@link Rectangle} as a wall and an {@code Image}
-     *     to display windows, do this:
+     *     For example, if you need to place a {@link Circle} on top of a {@link Square}, do this:
      *     <blockquote><pre>
-     *         yourRectangle.makeVisible();
-     *         yourImage.makeVisible();
+     *         yourSquare.makeVisible();
+     *         yourCircle.makeVisible();
      *     </pre></blockquote>
-     *     If you swap these two lines, <b>the image will be hidden below the rectangle.</b>
+     *     If you swap these two lines, <b>the {@link Circle} will be hidden behind the {@link Square} .</b>
      * </p>
      */
     @SuppressWarnings("unused")
@@ -195,8 +197,8 @@ public class Image {
     /**
      * Move the shape horizontally by a given amount of pixels.
      * @param distance how many <b>pixels</b> to move the object.
-     * Positive numbers ({@code distance > 0}) move the shape down.
-     * Negative numbers ({@code distance < 0}) move the shape up.
+     * Positive numbers ({@code distance > 0}) move the shape to the right.
+     * Negative numbers ({@code distance < 0}) move the shape to the left.
      * Zero ({@code distance == 0} does not move the shape at all.
      */
     @SuppressWarnings("unused")
@@ -220,15 +222,25 @@ public class Image {
      * Change the drawn image.
      * @param imagePath the <b>absolute or relative file path</b> to the image as {@link String}
      *                  <p>(e.g. {@code "C:\folder\image.png"}, {@code "folder/image.png"}).</p>
+     *                  <p>See the {@link Image} class description for more information.</p>
      * @throws fri.shapesge.engine.ShapesGEException if the file doesn't exist on that path
-     * @implNote This will redraw the image at its original size and orientation.
-     *           <p>If you need to preserve the size and orientation across the changes, use {@link Image#changeImageAndPreserveParameters(String)}.</p>
+     * @implNote This method will draw the new Image in its original size and mirroring.
+     *           <p>If you need to preserve the size and mirroring across the changes, use {@link Image#changeImageAndPreserveParameters(String)}.</p>
      */
     @SuppressWarnings("unused")
     public void changeImage(String imagePath) {
         this.changeImage(new ImageData(imagePath));
     }
 
+    /**
+     * Change the drawn image.
+     * @param imagePath the <b>absolute or relative file path</b> to the image as {@link String}
+     *                  <p>(e.g. {@code "C:\folder\image.png"}, {@code "folder/image.png"}).</p>
+     *                  <p>See the {@link Image} class description for more information.</p>
+     * @throws fri.shapesge.engine.ShapesGEException if the file doesn't exist on that path
+     * @implNote This method will draw the new Image in the same size and mirroring as the current one.
+     *           <p>If you need to always get the original, use {@link Image#changeImage(String)}.</p>
+     */
     public void changeImageAndPreserveParameters(String imagePath) {
         this.changeImageAndPreserveParameters(new ImageData(imagePath));
     }
@@ -237,12 +249,21 @@ public class Image {
      * Change the drawn image.
      * @param imageData the {@link ImageData} for this image.
      *                  <p>Use this method if you created {@link ImageData} manually.</p>
+     * @implNote This method will draw the new Image in its original size and mirroring.
+     *           <p>If you need to preserve the size and mirroring across the changes, use {@link Image#changeImageAndPreserveParameters(String)}.</p>
      */
     @SuppressWarnings("unused")
     public void changeImage(ImageData imageData) {
         this.drawable.changeImage(imageData.getImage(), false);
     }
 
+    /**
+     * Change the drawn image.
+     * @param imageData the {@link ImageData} for this image.
+     *                  <p>Use this method if you created {@link ImageData} manually.</p>
+     * @implNote This method will draw the new Image in the same size and mirroring as the current one.
+     *           <p>If you need to always get the original, use {@link Image#changeImage(String)}.</p>
+     */
     public void changeImageAndPreserveParameters(ImageData imageData) {
         this.drawable.changeImage(imageData.getImage(),true);
     }
@@ -280,8 +301,10 @@ public class Image {
     /**
      * Resize the image.
      * The image will still be anchored from the top left, and rotated around its center.
-     * @param newWidth the new width of the image.
-     * @param newHeight the new height of the image.
+     * @param newWidth the new width of the shape.
+     *                The width cannot be lower than 0 ({@code newWidth < 0}).
+     * @param newHeight the new height of the shape.
+     *                The height cannot be lower than 0 ({@code newHeight < 0}).
      */
     public void changeSize(int newWidth, int newHeight) {
         this.drawable.changeSize(newWidth, newHeight);
@@ -289,7 +312,7 @@ public class Image {
 
     /**
      * Mirror the image horizontally.
-     * @param mirrored Set to TRUE to make the image mirrored. Set to FALSE to get the original orientation.
+     * @param mirrored Use {@code true} to make the image mirrored. Use {@code false} to get the original orientation.
      */
     public void mirrorHorizontal(boolean mirrored) {
         this.drawable.flipHorizontal(mirrored);
@@ -305,7 +328,7 @@ public class Image {
 
     /**
      * Mirror the image vertically.
-     * @param mirrored Set to TRUE to make the image mirrored. Set to FALSE to get the original orientation.
+     * @param mirrored Use {@code true} to make the image mirrored. Use {@code false} to get the original orientation.
      */
     public void mirrorVertical(boolean mirrored) {
         this.drawable.flipVertical(mirrored);
@@ -320,35 +343,37 @@ public class Image {
     }
 
     /**
-     * @return the shape's top left corner x-coordinate (offset from left border of the game window).
+     * @return the x-coordinate of the shape's top left corner.
+     * <p>The x-coordinate is the distance (in pixels) from the <b>left border</b> of the game window.</p>
      */
     public int getPositionX() {
         return this.drawable.getXPosition();
     }
 
     /**
-     * @return the shape's top left corner y-coordinate (offset from top border of the game window).
+     * @return the y-coordinate of the shape's top left corner.
+     * <p>The y-coordinate is the distance (in pixels) from the <b>top border</b> of the game window.</p>
      */
     public int getPositionY() {
         return this.drawable.getYPosition();
     }
 
     /**
-     * @return the width of the shape.
+     * @return the width of the shape in <b>pixels</b>.
      */
     public int getWidth() {
         return this.drawable.getWidth();
     }
 
     /**
-     * @return the height of the shape.
+     * @return the height of the shape in <b>pixels</b>.
      */
     public int getHeight() {
         return this.drawable.getHeight();
     }
 
     /**
-     * @return the angle of the shape.
+     * @return the angle of the shape in <b>degrees</b>.
      */
     public int getAngle() {
         return this.drawable.getAngle();

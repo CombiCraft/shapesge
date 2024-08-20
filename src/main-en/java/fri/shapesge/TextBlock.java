@@ -41,7 +41,8 @@ public class TextBlock {
      *     with the given position being the <b>top left corner</b>.
      * </p>
      * <p>
-     *     You can change the position later using the {@link TextBlock#changePosition(int x, int y)} method.
+     *     You can change the position, font and color later using the {@link TextBlock#changePosition(int x, int y)},
+     *     {@link TextBlock#changeFont} and {@link TextBlock#changeColor} methods.
      * </p>
      * @param text text to be displayed
      * @param x x-coordinate of the text
@@ -71,7 +72,8 @@ public class TextBlock {
      * </li></ul>
      * </p>
      * <p>
-     *     You can change the position later using the {@link TextBlock#changePosition(int x, int y)} method.
+     *     You can change the position, font and color later using the {@link TextBlock#changePosition(int x, int y)},
+     *     {@link TextBlock#changeFont} and {@link TextBlock#changeColor} methods.
      * </p>
      * @param text text to be displayed
      */
@@ -81,17 +83,16 @@ public class TextBlock {
     }
 
     /**
-     * Make this text visible.
-     * If it was already visible, do nothing.
+     * Make this shape visible. If it was already visible, do nothing.
      * @implNote If you have multiple shapes on top of each other (overlapping),
      * the shapes will be displayed in the order you send this message in.
      * <p>
-     *     For example, if you're creating a button that consists of a {@link Rectangle} and a label that's {@code TextBlock}, do this:
+     *     For example, if you need to place a {@link Circle} on top of a {@link Square}, do this:
      *     <blockquote><pre>
-     *         yourRectangle.makeVisible();
-     *         yourTextBlock.makeVisible();
+     *         yourSquare.makeVisible();
+     *         yourCircle.makeVisible();
      *     </pre></blockquote>
-     *     If you swap these two lines, <b>the text will be hidden below the rectangle.</b>
+     *     If you swap these two lines, <b>the {@link Circle} will be hidden behind the {@link Square} .</b>
      * </p>
      */
     @SuppressWarnings("unused")
@@ -196,19 +197,6 @@ public class TextBlock {
 
     /**
      * Change the font according to the new specification.
-     * @param fontFamily name of the font family
-     *                   (e.g. "Arial", "Times New Roman", "Courier New")
-     * @param style      style of the font
-     *                   (e.g. {@link FontStyle#BOLD}, {@link FontStyle#ITALIC}, {@link FontStyle#UNDERLINE})
-     * @param size       size of the font in pixels
-     * @param lineSpacing spacing between the lines of this Text Block
-     */
-    public void changeFont(String fontFamily, FontStyle style, int size, int lineSpacing) {
-        this.drawable.changeFont(fontFamily, style == FontStyle.BOLD, style == FontStyle.ITALIC, style == FontStyle.UNDERLINE, size, lineSpacing);
-    }
-
-    /**
-     * Change the font according to the new specification.
      * <p>
      * This will also <b>change the width and height</b> of the {@code TextBlock}.
      * </p>
@@ -293,27 +281,19 @@ public class TextBlock {
      */
     public void changeFont(String fontFamily, EnumSet<FontStyle> style, int size, int lineSpacing) {
         this.drawable.changeFont(fontFamily, style.contains(FontStyle.BOLD), style.contains(FontStyle.ITALIC), style.contains(FontStyle.UNDERLINE), size, lineSpacing);
-
-     * @param fontFamily name of the font family
-     *                   (e.g. "Arial", "Times New Roman", "Courier New")
-     * @param style      style of the font
-     *                   (e.g. {@code EnumSet.of(FontStyle.BOLD, FontStyle.ITALIC)})
-     * @param size       size of the font in pixels
-     * @param lineSpacing spacing between the lines of this Text Block
-     */
-    public void changeFont(String fontFamily, EnumSet<FontStyle> style, int size, int lineSpacing) {
-        this.drawable.changeFont(fontFamily, style.contains(FontStyle.BOLD), style.contains(FontStyle.ITALIC), style.contains(FontStyle.UNDERLINE), size, lineSpacing);
     }
 
     /**
-     * Change the color of the text in the entire block.
+     * Change the color of all text in the TextBlock.
      * @param newColor new color from <b>Colors in sbge.ini</b> or in <b>plain #rrggbb format</b> as {@link String} (e.g. {@code "blue"}, {@code "yellow"}, {@code "#ba9000"}).
      *                 <h3>Colors in sbge.ini:</h3>
      *                 <p>The default supported colors are {@code "red"}, {@code "blue"}, {@code "yellow"}, {@code "green"}, {@code "magenta"}, {@code "white"}, {@code "brown"} and {@code "black"}</p>
      *                 <p>Visit <a href="https://github.com/infjava/shapesge/wiki">ShapesGE Wiki on GitHub</a> to learn more.</p>
      *                 <h3>Plain #rrggbb:</h3>
-     *                 <p>This is a HEX color code. To find this code for your desired color, use an online HEX color picker tool.</p>
-     *                 <p>Visit <a href="https://w3schools.com/colors/colors-hexadecimal.asp">W3Schools' article on HEX colors</a> to learn more.</p>
+     *                 <p>
+     *                     This is a HEX color code. To find this code for your desired color, use an online HEX color picker tool
+     *                     (on e.g. <a href="https://g.co/kgs/RmaEk8D">Google</a>, <a href="https://www.bing.com/search?q=hex+color+picker">Bing</a>, etc.)
+     *                 </p>
      */
     @SuppressWarnings("unused")
     public void changeColor(String newColor) {
@@ -342,7 +322,7 @@ public class TextBlock {
         this.drawable.moveTo(x, y);
     }
     /**
-     * @return the x-coorindate of the shape's top left corner.
+     * @return the x-coordinate of the shape's top left corner.
      * <p>The x-coordinate is the distance (in pixels) from the <b>left border</b> of the game window.</p>
      */
     public int getPositionX() {
@@ -350,7 +330,7 @@ public class TextBlock {
     }
 
     /**
-     * @return the y-coorindate of the shape's top left corner.
+     * @return the y-coordinate of the shape's top left corner.
      * <p>The y-coordinate is the distance (in pixels) from the <b>top border</b> of the game window.</p>
      */
     public int getPositionY() {
