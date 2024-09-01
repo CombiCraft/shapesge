@@ -12,6 +12,7 @@ import fri.shapesge.drawables.ImageDrawable;
  *     <b>Windows:</b>
  *     <ol>
  *         <p>Absolútna cesta začína písmenkom disku (napr. {@code C:\})</p>
+ *         <p>Cesta bude vyzerať nejako takto: {@code C:\projekt\obrazok.png}</p>
  *         <li>Nájdi svoj obrázok v programe <b>Prieskumník (File Explorer</b> 📁)</li>
  *         <li>Klikni na obrázok pravým tlačidlom myši</li>
  *         <li>Zvoľ možnosť <b>Skopírovať cestu (Copy as path)</b></li>
@@ -19,15 +20,21 @@ import fri.shapesge.drawables.ImageDrawable;
  *     <b>MacOS:</b>
  *     <ol>
  *         <p>Absolútna cesta začína <i>priečinkom root</i>. ({@code /})</p>
+ *         <p>Cesta bude vyzerať nejako takto: {@code /projekt/obrazok.png}</p>
  *         <li>Nájdi svoj obrázok v programe <b>Finder</b></li>
  *         <li>Klikni na obrázok pravým tlačidlom myši</li>
  *         <li>Slač a drž klávesu <b>OPTION</b></li>
  *         <li>Zvoľ možnosť <b>Skopírovať cestu (Copy as Filepath)</b></li>
  *     </ol>
- *     <b>Linux:</b>
+ *     <b>Systémy Linux a BSD:</b>
  *     <ul>
  *         <p>Absolútna cesta začína <i>priečinkom root</i>. ({@code /})</p>
- *         <p>Presnejšie inštrukcie nájdeš v používateľskom návode konkrétnej distribúcie.</p>
+ *         <p>Cesta bude vyzerať nejako takto: {@code /projekt/obrazok.png}</p>
+ *         <p>
+ *             Linuxová cesta k súboru môže taktiež začínať {@code ~} namiesto {@code /}.
+ *             V takom prípade je to cesta k používateľkskému priečinku, a znamená to isté ako {@code /usr/<you>}
+ *         </p>
+ *         <p>Presnejšie inštrukcie hľadaj online.</p>
  *     </ul>
  * </p>
  * <b><u>DÔLEŽITÉ:</u></b> Absolútnu cestu nepoužívaj v serióznych projektoch (vrátane semestrálnych prác).

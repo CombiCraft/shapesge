@@ -13,6 +13,7 @@ import fri.shapesge.drawables.ImageDrawable;
  *     <b>On Windows:</b>
  *     <ol>
  *         <p>The absolute file path starts from your drive letter (e.g. {@code C:\})</p>
+ *         <p>The file path looks something like this: {@code C:\project\image.png}</p>
  *         <li>Find the image in <b>File Explorer</b> (📁)</li>
  *         <li>Right click the image</li>
  *         <li>Select <b>Copy as path</b></li>
@@ -20,15 +21,21 @@ import fri.shapesge.drawables.ImageDrawable;
  *     <b>On MacOS:</b>
  *     <ol>
  *         <p>The absolute file path starts from the <i>root directory</i>. ({@code /})</p>
+ *         <p>The file path looks something like this: {@code /project/image.png}</p>
  *         <li>Find the image in <b>Finder</b></li>
  *         <li>Right click the image</li>
  *         <li>Hold down the <b>OPTION</b> key</li>
  *         <li>Select <b>Copy as Filepath</b></li>
  *     </ol>
- *     <b>On Linux:</b>
+ *     <b>On Linux and BSD systems:</b>
  *     <ul>
- *         <p>The absolute file path starts from the <i>root directory</i>. ({@code /})
- *         Please consult <b>your distro Help page</b> for specific steps.</p>
+ *         <p>The absolute file path starts from the <i>root directory</i>. ({@code /})</p>
+ *         <p>The file path looks something like this: {@code /project/image.png}</p>
+ *         <p>
+ *             On Linux, the file path may also start with a {@code ~} instead of {@code /}.
+ *             The {@code ~} symbol represents your home directory, and stands for {@code /usr/<you>}.
+ *         </p>
+ *         <p>Please look online for specific steps.</p>
  *     </ul>
  * </p>
  * <b><u>IMPORTANT NOTE:</u></b> Do not use Absolute file path for serious projects (including semester works).

@@ -69,8 +69,8 @@ public class Ellipse {
      * <p>
      *     For example, if you need to place a {@link Circle} on top of a {@link Square}, do this:
      *     <blockquote><pre>
-     *         yourRectangle.makeVisible();
-     *         yourImage.makeVisible();
+     *         yourSquare.makeVisible();
+     *         yourCircle.makeVisible();
      *     </pre></blockquote>
      *     If you swap these two lines, <b>the {@link Circle} will be hidden behind the {@link Square} .</b>
      * </p>
